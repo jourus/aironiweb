@@ -1,0 +1,2 @@
+"Consegnati" 10
+"In Attesa" 0

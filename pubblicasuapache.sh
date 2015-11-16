@@ -1,1 +1,1 @@
-cp -R /Users/gianfranco/Documents/aironiweb/site/* /Library/WebServer/Documents/airo/
+cp -R /Users/gianfranco/Documents/workspace/aironiweb/site/* /Library/WebServer/Documents/airo/

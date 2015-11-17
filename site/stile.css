@@ -1,3 +1,19 @@
+div#speciali {
+	background-color: orange;
+	padding: 10px;
+	float: left;
+	width: 24%;
+	
+}
+
+div#comandimanuali{
+	width: 60%;
+	float: left;
+	background-color: white;
+	
+}
+
+
 DIV#benvenuti
 {
 
@@ -181,4 +197,51 @@ DIV#benvenuti2
 	font-size: 16px;
 	font-weight: bold;
 	background-color: #CCCCFF;
+}
+
+tr, td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: #CCCCFF;
+	border-right: black 2px dotted;
+	border-top: black 2px dotted;
+	border-left: black 2px dotted;
+	border-right: black 2px dotted;
+	
+	
+}
+
+.righe 
+{
+	background-color: #FFFFFF;
+	cellpadding=3px; 
+	cellspacing=1px;
+}
+
+.righealt 
+{
+	background-color: #FFFF9E;
+	cellpadding=3px; 		
+	cellspacing=1px;
+		
+}
+
+.interlinea
+{
+	background-image: url("immagini/linea.jpg");
+	height: 4px;
+	
+}
+.interlinea-vuota
+{
+	background-color: #FFFFFF;
+	height: 4px;
+	
+}
+.interlinea-back
+{
+	background-image: url("immagini/linead.jpg");
+	height: 4px;
+	
 }

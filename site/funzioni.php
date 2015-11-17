@@ -22,4 +22,20 @@ function apiciaposto($valore)
 
 }
 
+
+function tableRow($properties, $fields) {
+
+	$row = "<tr" . $properties . ">";
+	$tdOpen = "<td>";
+	$tdClose = "</td>";
+	foreach ($fields as $field) {
+		$row .= $tdOpen . $field . $tdClose;
+			
+	}
+	$row .= "</tr>";
+	return $row;
+
+}
+
+
 ?>

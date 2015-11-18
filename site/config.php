@@ -1,8 +1,12 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "airophp";
+
+
+
 $righe = 0;
 
 
@@ -10,12 +14,12 @@ $righe = 0;
 $coloresfondopag="#FFFFFF";
 
 //nome del dns
-$strConnString="DSN=AironiGara4;DATABASE=airo;uid=sa;pwd=G4ltrucc0!;";
+//$strConnString="DSN=AironiGara4;DATABASE=airo;uid=sa;pwd=G4ltrucc0!;";
 
 
 
 //nome del file che viene utilizzato come standard nel podio in caso di mancanza di foto.
-$FotoPodioStandard="spaziatore.gif";
+$FotoPodioStandard="spaziatore.jpg";
 
 //numero di piazzzole totale
 $NumeroPiazzoleGara=24;

@@ -1,0 +1,8 @@
+CREATE TABLE `airophp`.`IMMAGINI` (
+  `ID` INT NOT NULL,
+  `NomeFile` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`ID`));
+
+
+
+

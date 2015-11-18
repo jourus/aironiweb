@@ -220,6 +220,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+
 $sql = "SELECT count(PUNTI) as numcons FROM ISCRITTI WHERE Piazzuola=?";
 $stmt = $conn->prepare($sql);
 

@@ -1,4 +1,7 @@
 <?php
+
+include 'config.php';
+
 //restituisce i primi $len caratteri di $str
 function left($str,$len){
 	return substr($str, 0, $len);
@@ -37,6 +40,9 @@ function tableRow($properties, $fields) {
 
 }
 
+
+
+
 class gridClassifica
 {
 	public $Iscritto;
@@ -48,6 +54,9 @@ class gridClassifica
 
 
 }
+
+
+
 
 
 ?>

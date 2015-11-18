@@ -2,64 +2,76 @@
 include 'config.php';
 include 'funzioni.php';
 
-$classe = $_GET['classe']; 
-$categoria = $_GET['categoria']; 
+
+if (isset($_GET['classe'])) {
+	$classe = $_GET['classe'];
+}
+else
+	$classe = "";
+
+if (isset($_GET['categoria'])) {
+	$categoria = $_GET['categoria'];
+}
+else
+	$categoria = "";
 
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
-$sql = "SELECT concat(NOME, ' ', COGNOME) AS ISCRITTI, PUNTI , SPOT + SUPERSPOT as SPOT, SUPERSPOT as SUPER  FROM ISCRITTI WHERE CLASSE= ? AND CATEGORIA = ? AND PUNTI IS NOT NULL ORDER BY PUNTI DESC, SPOT + SUPERSPOT DESC";
-
-		$stmt = $conn->prepare($sql);
-		
-		$stmt->bind_param("ss", $classe, $categoria);
-
-		$stmt->execute();
-		$result=$stmt->get_result();
-		
-	$numeroarcieri= $result->num_rows;
-	
-	
-
-	$j=0;
-	while($row = $result->fetch_assoc()) {          
-	//for ($j=0; $j <= $ncategorie;$j++) {
-		$j++;
-		echo "--------------------   " . $row['ISCRITTI'] . " " . $row['PUNTI'] . "<br>";
-	}
-	$conn->close();
-	
-
-		
-		
-		
-		
-		if ($numeroarcieri > $MaxRigheArcieriInClassifica) {
-			
-		
-			$limite1 = $MaxRigheArcieriInClassifica;
-			$limite2 = $numeroarcieri;
-		}
-		else
-		{
-			$limite1 = $numeroarcieri;
-			$limite2 = -1;
-		
-		}
-		
-		
-		//response.write("narc "&numeroarciei+1&"<br>")
-		
-		
-		
-		
- ?>
-
+             // Create connection
+             $conn = new mysqli($servername, $username, $password, $dbname);
+             // Check connection
+             if ($conn->connect_error) {
+             	die("Connection failed: " . $conn->connect_error);
+             }
+             
+             $sql = "SELECT concat(NOME, ' ', COGNOME) AS ISCRITTI, PUNTI , SPOT + SUPERSPOT as SPOT, SUPERSPOT as SUPER  FROM ISCRITTI WHERE CLASSE= ? AND CATEGORIA = ? AND PUNTI IS NOT NULL ORDER BY PUNTI DESC, SPOT + SUPERSPOT DESC";
+             
+             $stmt = $conn->prepare($sql);
+             
+             $stmt->bind_param("ss", $classe, $categoria);
+             
+             $stmt->execute();
+             $result=$stmt->get_result();
+             
+             $numeroarcieri= $result->num_rows;
+             
+             
+             if ($numeroarcieri > $MaxRigheArcieriInClassifica) {
+             	 
+             	 
+             	$limite1 = $MaxRigheArcieriInClassifica;
+             	$limite2 = $numeroarcieri;
+             }
+             else
+             {
+             	$limite1 = $numeroarcieri;
+             	$limite2 = -1;
+             	 
+             }
+              
+             
+             $TuttiGliArcieri = array();
+             $TuttiGliArcieri[]=$numeroarcieri;
+             
+             $j=0;
+             while($row = $result->fetch_assoc()) {
+             	//for ($j=0; $j <= $ncategorie;$j++) {
+             		
+      //       	echo "-------------------zz- $j  " .  $row['ISCRITTI']   . $row['PUNTI'] . "<br>";
+            	$TuttiGliArcieri[$j] = new gridClassifica();
+            	$TuttiGliArcieri[$j]->Iscritto = $row['ISCRITTI'];
+            	$TuttiGliArcieri[$j]->Punti = $row['PUNTI'];
+            	$TuttiGliArcieri[$j]->Spot = $row['SPOT'];
+            	$TuttiGliArcieri[$j]->Super = $row['SUPER'];
+      			$j++;
+      			
+             }
+             $conn->close();
+             
+             
+            
+             
+           
+             ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
@@ -105,7 +117,7 @@ MM_reloadPage(true);
           <td width="48%" valign="top"><table width="100%" border="0">
               <tr class="posclassifica"> 
                 <td width="60"> <div align="center" class="posclassifica">POS</div></td>
-                <td> <div align="center">Nome</div></td>
+                <td> <div align="center">-Nome-</div></td>
                 <td>&nbsp;</td>
                 <td width="70"> <div align="right">Punti</div></td>
                 <td width="70"> <div align="right">Spot</div></td>
@@ -114,126 +126,80 @@ MM_reloadPage(true);
                 
                 <td>&nbsp;</td>
               </tr>
-              <% 
-			  
-			 
-			  for j = 0 to limite1
-			
+             
+             			 
+				 <?php 
 				
-				 %>
-              <tr class="tabellapodio"> 
-                <td class="tabellapodio"> <div align="center"> 
-                    <%response.write(j+1)%>
-                  </div></td>
-                <td nowrap> 
-                  <div align="center" > 
-                    <%response.write(avarGetRowsArray(0,j))%>
-                  </div></td>
-                <td>&nbsp;</td>
-                <td width="70" class="tabellapodio"> <div align="right"> 
-                    <%response.write(avarGetRowsArray(1,j))%>
-                  </div></td>
-                <td width="70" class="tabellapodio"> <div align="right"> 
-                    <%response.write(avarGetRowsArray(2,j))%>
-                  </div></td>
-                  <!-- 2011.03.27 GFF Aggiunta colonna super--> 
-                <td width="70" class="tabellapodio"> <div align="right"> 
-                    <%response.write(avarGetRowsArray(3,j))%>
-                  </div></td>
-                <td class="tabellapodio">&nbsp;</td>
-              </tr>
-              <% next %>
+				  
+				 for ($x=0;$x<$limite1;$x++){
+				 	echo "<tr>";
+				 	$pos = $x + 1;
+				 	echo "<td>$pos</td>";
+				 	echo "<td>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+				 	echo "<td>&nbsp;</td>";
+				 	echo "<td>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+				 	echo "<td>" . $TuttiGliArcieri[$x]->Spot . "</td>";
+				 	echo "<td>" . $TuttiGliArcieri[$x]->Super . "</td>";
+				 	echo "<td>&nbsp;</td>";
+				 	echo "</tr>";
+				 	
+				 }
+				 
+				 ?>
+             
           </table></td>
           <td valign="top">
 		  <table width="100%" border="0">
-		  <% If  limite2<>-1 then%>
-              <tr class="posclassifica2"> 
-              	
-              	<td width="50"> <div align="right">&nbsp;</div></td>
-              	
-                <td width="60"> <div align="center" class="posclassifica2">POS</div></td>
-                <td> <div align="center">Nome</div></td>
-                <td>&nbsp;</td>
-                <td width="70"> <div align="right">Punti</div></td>
-                <td width="70"> <div align="right">Spot</div></td>
-                 <!-- 2011.03.27 GFF Aggiunta colonna super--> 
-                 <td width="70"> <div align="right">Super</div></td>
-                <td>&nbsp;</td>
-              </tr>
-			  <% End If %>
-              <% for j =MaxRigheArcieriInClassifica + 1 to limite2
-			
+		  
+		  <?php
+		  		
+		  		if($limite2 != -1) // Gli arcieri sono più di 24 in questa categoria. Esiste una seconda metà della classifica 
+		  		{
+		  			
+			  		echo 	"<tr class=\"posclassifica2\"> 
+			  		      	<td width=50> <div align=\"right\">&nbsp;</div></td>
+			                <td width=60> <div align=\"center\" class=\"posclassifica2\">POS</div></td>
+			                <td> <div align=\"center\">Nome</div></td>
+			                <td>&nbsp;</td>
+			                <td width=70> <div align=\"right\">Punti</div></td>
+			                <td width=70> <div align=\"right\">Spot</div></td>
+			                 <td width=70> <div align=\"right\">Super</div></td>
+			                <td>&nbsp;</td>
+				              </tr>
+					 ";
+				}
+		  		
+	
+				for ($x= $MaxRigheArcieriInClassifica + 1;$x<$limite2;$x++){
+					echo "<tr>";
+					
+					$pos = $x ;
+					
+					echo "<td>$pos</td>";
+					echo "<td>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+					echo "<td>&nbsp;</td>";
+					echo "<td>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+					echo "<td>" . $TuttiGliArcieri[$x]->Spot . "</td>";
+					echo "<td>" . $TuttiGliArcieri[$x]->Super . "</td>";
+					echo "<td>&nbsp;</td>";
+					echo "</tr>";
 				
-				'response.write("<tr>")
-				'response.write("<td>")
-				'response.write(j+1)
-				'response.write("</td>")
-				'response.write("<td>")
-				'response.write(avarGetRowsArray(4,j))
-				'response.write("</td>")
-				'response.write("<td>")
-				'response.write(avarGetRowsArray(1,j))
-				'response.write("</td>")
-				'response.write("<td>")
-				'response.write(avarGetRowsArray(2,j))
-				'response.write("</td>")
-				'response.write("</tr>")
-				 %>
-              <tr class="tabellapodio"> 
-              	<td>&nbsp;</td>
-                <td class="tabellapodio"> <div align="center"> 
-                    <%response.write(j+1)%>
-                  </div></td>
-                  
-                <td nowrap> 
-                  <div align="center"> 
-                    <%response.write(avarGetRowsArray(0,j))%>
-                  </div></td>
-                <td>&nbsp;</td>
-                <td width="70" class="tabellapodio"> <div align="right"> 
-                    <%response.write(avarGetRowsArray(1,j))%>
-                  </div></td>
-                <td width="70" class="tabellapodio"> <div align="right"> 
-                    <%response.write(avarGetRowsArray(2,j))%>
-                    </td>
-                <td width="70" class="tabellapodio"> <div align="right"> 
-                	<%response.write(avarGetRowsArray(3,j))%>
-                    <!-- 2011.03.27 GFF Aggiunta colonna super--> 
-                </div></td>
-                <td class="tabellapodio">&nbsp;</td>
-              </tr>
-              <% next %>
+				}
+				
+				?>
+				
             </table> 
 			
-			<!-- Tab Ploticus per Grafico-->
-			<table width="100%" border="0">
-              <tr class="posclassifica2"> 
-                <td class="PloticusTitle"> <div align="center"><!-- Situazione Scores per Classe: <%= classe %> Categoria: <%= categoria %> --> </div></td>
-              </tr>
-              <tr class="tabellapodio"> 
-                <td class="tabellapodio"> </td>
-              </tr>
-              <tr class="tabellapodio">
-                <td class="tabellapodio">
-                
-                </td>
-              </tr>
-            </table>
+
 			
 		  </td>
         </tr>
     </table></td>
   </tr>
 </table>
-<% 
 
 
-    set scorescons = Server.CreateObject("ADODB.Recordset")
-	ssqCons="SELECT count(PUNTI) as numcons FROM ISCRITTI WHERE Piazzuola="
 
-set rscalssifica = Server.CreateObject("ADODB.Recordset")
-
- %>
 <table width="100%" border="0">
   <tr class="posclassifica2">
     <td class="PloticusTitle">Situazione Consegna Scores </td>
@@ -243,60 +209,65 @@ set rscalssifica = Server.CreateObject("ADODB.Recordset")
 	<!--tabella Piazzole-->
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <% For i = 1 to NumeroPiazzoleGara / 2 
-		 
-		  scorescons.Open ssqCons&" "&i , strConnString,adOpenDynamic
-		  
-		   'response.write(" xxxx " & scorescons("numcons"))
-		  
-		  
-		  if scorescons("numcons")=0 then 
-		  piazzscoreconsyesno="piazzscoreconsno"
-		  	else
-		  	piazzscoreconsyesno="piazzscoreconsyes"
-		  End If 
-		  
-		  scorescons.close
-		   %>
-          <td class="<%=piazzscoreconsyesno%>"><%= Response.Write(right("0"&i,2)) %></td>
-          <% next %>
+          
+          
+          <?php 
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT count(PUNTI) as numcons FROM ISCRITTI WHERE Piazzuola=?";
+$stmt = $conn->prepare($sql);
+
+for($i = 1; $i <= $NumeroPiazzoleGara ; $i++) 
+{
+	//echo "riga $i <br>";
+	$stmt->bind_param("i", $i);
+	$stmt->execute();
+	$result=$stmt->get_result();
+	
+	if($row = $result->fetch_assoc()) {
+	
+		$scorescons = $row['numcons'];
+		
+		
+		if ($scorescons==0) 
+			$piazzscoreconsyesno="piazzscoreconsno";
+		else
+			$piazzscoreconsyesno="piazzscoreconsyes";
+		
+				   
+			
+		echo "<td class=\"$piazzscoreconsyesno\">$i</td>";
+		
+		if ($i == $NumeroPiazzoleGara / 2)
+		{
+			echo "</tr><tr class=\"tabellapodio\">";
+		}
+				
+		
+		}
+		//echo "Eseguita verifica su piazzola $i --> " . $row['numcons'] ." <br>";
+	
+	
+	}
+
+
+	$conn->close();
+?>
+          
+          
+          
+          
         </tr>
       </table>
 	  </td>
   </tr>
-  <tr class="tabellapodio">
-    <td class="tabellapodio">
-	<!--tabella Piazzole-->
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <% For i = 1 + (NumeroPiazzoleGara / 2) to NumeroPiazzoleGara 
-		  
-		  scorescons.Open ssqCons&" "&i , strConnString,adOpenDynamic
-		  
-		  if scorescons("numcons")=0 then 
-		  piazzscoreconsyesno="piazzscoreconsno"
-		  	else
-		  	piazzscoreconsyesno="piazzscoreconsyes"
-		  End If
-		  scorescons.close
-		  
-		  if (i <= NumeroPiazzoleGara) then
-		  
-		   %>
-           <td class="<%=piazzscoreconsyesno%>"><% Response.Write(i) %></td>
-           
-           
-          <% else %>
-          
-           <td class="piazzscoreneutro">00</td>
-          <%
-          end if
-          
-          next %>
-        </tr>
-      </table>
-	  </td>
-  </tr>
+ 
   <tr class="tabellapodio">
     <td class="vocimenu">Legenda</td>
   </tr>

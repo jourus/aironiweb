@@ -37,5 +37,17 @@ function tableRow($properties, $fields) {
 
 }
 
+class gridClassifica
+{
+	public $Iscritto;
+	public $Classe;
+	public $Categoria;
+	public $Punti;
+	public $Spot;
+	public $Super;
+
+
+}
+
 
 ?>

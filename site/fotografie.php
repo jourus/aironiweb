@@ -14,19 +14,31 @@ include 'config.php';
   		
   	}
   	if($numero_file>0) {
-	  	$randomphoto1 = "immagini/fotolibere/" . $arrfiles[mt_rand(0, $numero_file - 1)];
-	  	$randomphoto2 = "immagini/fotolibere/" . $arrfiles[mt_rand(0, $numero_file - 1)];
-	  	$randomphoto3 = "immagini/fotolibere/" . $arrfiles[mt_rand(0, $numero_file - 1)];
+  		$offset = 2; //i primi due file della cartella sono . e ..
+	  	$randomphoto1 = $pathfotogeneriche . $arrfiles[mt_rand($offset, $numero_file - 1)];
+	  	$randomphoto2 = $pathfotogeneriche . $arrfiles[mt_rand($offset, $numero_file - 1)];
+	  	$randomphoto3 = $pathfotogeneriche . $arrfiles[mt_rand($offset, $numero_file - 1)];
   	}
   	else 
   	{
-  		$randomphoto1 = $randomphoto2 = $randomphoto3 = "immagini/foto/" . $FotoPodioStandard;
+  		$randomphoto1 = $randomphoto2 = $randomphoto3 = $pathfoto . $FotoPodioStandard;
 
   	}
-//  	http://localhost/airo/immagini/foto/spaziatore.jpg
 
-  	
+/* 
+ * Debug 
+ 
+ echo "La Foto 1 è: $randomphoto1<br>";
+ echo "La Foto 2 è: $randomphoto2<br>";
+ echo "La Foto 3 è: $randomphoto3<br>"; 	
 
+ for ($check = 0; $check < $numero_file; $check++) {
+ 	$printfile = $arrfiles[$check];
+ 	echo "File --> $printfile<br>";
+ 	
+ }
+ */
+ 
 ?>
 
 

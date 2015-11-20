@@ -27,7 +27,8 @@ $NumeroPiazzoleGara=24;
 // 2011.03.27 GFF Il numero massimo di arcieri per colonna di classifica e' un parametro
 $MaxRigheArcieriInClassifica = 24;
 
-$pathfotogeneriche="/immagini/fotolibere/";
+$pathfotogeneriche="immagini/fotolibere/";
+$pathfoto="immagini/foto";
 //pathVideogeneriche="C:\andrea\airo\sito\immagini\videoliberi\"
 
 

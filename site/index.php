@@ -63,8 +63,8 @@
 		}      
 		 			
 		 			
-		 $Podio = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('podio.asp?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
-		 $Classifica = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('classifica.asp?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
+		 $Podio = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('podio.php?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
+		 $Classifica = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('classifica.php?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
 		 	
 		 echo tableRow(" class=\"" . $formatClasseRiga . "\"", array($Podio, $classe, $categoria, $Classifica));
 		
@@ -101,7 +101,7 @@
               </tr>
               <tr> 
                 <td width="200" class="vocimenu">Piazzole</td>
-                <td><div align="center"><a href="#" onClick="MM_openBrWindow('piazzoletot.asp','onda','menubar=yes,width=800,height=600')"><img src="immagini/computer.gif" width="14" height="14"></a></div></td>
+                <td><div align="center"><a href="#" onClick="MM_openBrWindow('piazzoletot.php','onda','menubar=yes,width=800,height=600')"><img src="immagini/computer.gif" width="14" height="14"></a></div></td>
               </tr>
               <tr> 
                 <td width="200"><img src="immagini/linea.jpg" width="200" height="4"></td>
@@ -125,7 +125,7 @@
               </tr>
               <tr> 
                 <td width="200" class="vocimenu">Autofoto</td>
-                <td><div align="center"><a href="#" onClick="MM_openBrWindow('fotografie_auto.asp','onda','toolbar=yes,width=800,height=600')"><img src="immagini/computer.gif" width="14" height="14"></a></div></td>
+                <td><div align="center"><a href="#" onClick="MM_openBrWindow('fotografie.php','onda','toolbar=yes,width=800,height=600')"><img src="immagini/computer.gif" width="14" height="14"></a></div></td>
               </tr>
 
               <tr> 

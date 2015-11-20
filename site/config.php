@@ -24,10 +24,10 @@ $FotoPodioStandard="spaziatore.jpg";
 //numero di piazzzole totale
 $NumeroPiazzoleGara=24;
 
-// 2011.03.27 GFF Il numero massimo di arcieri � un parametro
+// 2011.03.27 GFF Il numero massimo di arcieri per colonna di classifica e' un parametro
 $MaxRigheArcieriInClassifica = 24;
 
-//pathfotogeneriche="C:\andrea\airo\sito\immagini\fotolibere\"
+$pathfotogeneriche="/immagini/fotolibere/";
 //pathVideogeneriche="C:\andrea\airo\sito\immagini\videoliberi\"
 
 

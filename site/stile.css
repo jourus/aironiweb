@@ -251,8 +251,19 @@ ddtr, ddtd {
 	float: left; 
 	width: 48%; 
 	border: 4px; 
-	// border-style: double; 
+	border-style: double; 
 	border-color: #00F;
+	margin: 3px;
+	font-family: fantasy;
+}
+
+
+.classificaPerCompagnia {
+	float: left; 
+	width: 48%; 
+	border: 4px; 
+//	border-style: double; 
+//	border-color: #00F;
 	margin: 3px;
 	font-family: fantasy;
 }

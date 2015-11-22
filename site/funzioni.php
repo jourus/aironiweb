@@ -1,6 +1,5 @@
 <?php
 
-include 'config.php';
 
 //restituisce i primi $len caratteri di $str
 function left($str,$len){

@@ -3,7 +3,7 @@ include 'config.php';
 
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
 // Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
@@ -36,6 +36,9 @@ $arrayfinalecategorie = $arraycategorie . $terminestringa;
 $sql="SELECT DISTINCT COMP FROM ISCRITTI WHERE PUNTI IS NOT NULL";
 $result = $conn->query($sql);
 
+
+//$comps = $result->num_rows;
+
 $arraycompagnie="";
 $terminestringacomp="'finecomp'";
 	
@@ -43,17 +46,20 @@ $terminestringacomp="'finecomp'";
 while($row = $result->fetch_assoc()) {
 	$comp=$row['COMP'];
 	$arraycompagnie .= "'" . $comp . "',";
+
+	//echo "<script>alert($arraycompagnie);</script>";
 	
 }
+
 $conn->close();
 
 $arraycompagnie .= $terminestringacomp;
 
 
+//echo "<script>alert(\"$arraycompagnie\"   righe: ' );</script>";
 
 
-
-echo $arrayfinaleclassi . "<br>" . $arrayfinalecategorie . "<br>" . $arraycompagnie . "<br>";
+//echo $arrayfinaleclassi . "<br>" . $arrayfinalecategorie . "<br>" . $arraycompagnie . "<br>";
 
 //response.write(arrayfinaleclassi&"<BR>"&arrayfinalecategorie&"<br>"&arraycompagnie)
 ?>

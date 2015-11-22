@@ -17,7 +17,7 @@ else
 
 
              // Create connection
-             $conn = new mysqli($servername, $username, $password, $dbname);
+             $conn = new mysqli( AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
              // Check connection
              if ($conn->connect_error) {
              	die("Connection failed: " . $conn->connect_error);
@@ -214,7 +214,7 @@ MM_reloadPage(true);
           <?php 
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli( AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
 // Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);

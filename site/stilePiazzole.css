@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.divPiazzole {
+	width: 40%;
+	border: 2px solid;
+	border-color: #AAA;
+  border-radius: 15px;
+  background-color: #AAA;
+  box-shadow: 5px 5px 10px 2px #333333;
+  height: 200px;
+}
+
+.tblpiazzole {
+	height: 200px;
+	width: 100%;
+	text-align: left;
+	
+	
+	
+}
+
+.tblPiazzole thead {
+	text-align: center;
+}
+
+.tblpiazzole tbody {
+	padding: 3px;
+	font: arial normal 12px;
+	
+}

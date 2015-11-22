@@ -1,9 +1,16 @@
 <?php
 
+
+define("AIRO_CONN_SERVERNAME", "localhost");
+define("AIRO_CONN_USERNAME", "root");
+define("AIRO_CONN_PASSWORD", "");
+define("AIRO_CONN_DBNAME", "airophp");
+
+		
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "airophp";
+// $username = "root";
+// $password = "";
+// $dbname = "airophp";
 
 
 
@@ -26,9 +33,11 @@ $NumeroPiazzoleGara=24;
 
 // 2011.03.27 GFF Il numero massimo di arcieri per colonna di classifica e' un parametro
 $MaxRigheArcieriInClassifica = 24;
+$MaxPagineClassifica=4;
+
 
 $pathfotogeneriche="immagini/fotolibere/";
-$pathfoto="immagini/foto";
+$pathfoto="immagini/foto/";
 //pathVideogeneriche="C:\andrea\airo\sito\immagini\videoliberi\"
 
 

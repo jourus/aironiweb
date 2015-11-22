@@ -199,7 +199,7 @@ DIV#benvenuti2
 	background-color: #CCCCFF;
 }
 
-tr, td {
+ddtr, ddtd {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
@@ -244,4 +244,15 @@ tr, td {
 	background-image: url("immagini/linead.jpg");
 	height: 4px;
 	
+}
+
+
+.piazzolapregara {
+	float: left; 
+	width: 48%; 
+	border: 4px; 
+	// border-style: double; 
+	border-color: #00F;
+	margin: 3px;
+	font-family: fantasy;
 }

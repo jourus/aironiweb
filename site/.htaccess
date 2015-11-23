@@ -1,0 +1,11 @@
+	# chiamata al mod_rewrite
+#	RewriteEngine On
+	# le regole varranno per tutta la directory
+	# in cui viene salvato l'.htaccess
+#	RewriteBase /
+	# regole di riscrittura per la home
+#	RewriteRule ^()$ index.php [NC,L]
+	# condizioni per la riscrittura
+#	Rewritecond %{REQUEST_URI} !(^/?.*\..*$) [NC]
+	# riscrittura delle pagine PHP
+#	RewriteRule (.*)$ $1.php [NC]

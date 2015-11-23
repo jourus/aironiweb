@@ -8,13 +8,15 @@
   background-color: #AAA;
   box-shadow: 5px 5px 10px 2px #333333;
   height: 200px;
+  margin-bottom: 20px;
+  float: left;
 }
 
 .tblpiazzole {
 	height: 200px;
 	width: 100%;
 	text-align: left;
-	
+	margin-left: 15px;
 	
 	
 }
@@ -24,7 +26,10 @@
 }
 
 .tblpiazzole tbody {
-	padding: 3px;
 	font: arial normal 12px;
+	
+}
+.tblpiazzole td {
+	padding: 3px;
 	
 }

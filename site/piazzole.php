@@ -13,19 +13,21 @@
 
 <input id='CaricaPiazzola1inTabella1' value='Carica Piazzola 1 in tabella 1' type="button" onclick="setPiazzola(1, 'tabpiazzola1');"/>
 <input id='CaricaPiazzola2inTabella1' value='Carica Piazzola 2 in tabella 1' type="button" onclick="setPiazzola(2, 'tabpiazzola1');"/>
+<input id='btn3' value='Test Vari' type="button" onclick="alert($('#titolotabpiazzola1').text());"/>
 
 <?php 
 
 
-for ($snipet = 1; $snipet < 6; $snipet++) {
-
+for ($snipet = 1; $snipet <= 6; $snipet++) {
+	
 	echo "<div id='divTable$snipet' class='divPiazzole'> <table id='tabpiazzola$snipet' class='tblPiazzole'>
-		<thead><tr><td colspan=2><p id='titolotabpiazzola$snipet'>Piazzola $snipet</p></td></tr></thead>
+		<thead><tr><td colspan=3><label id='titolotabpiazzola$snipet'>Piazzola $snipet</label></td></tr></thead>
 		<tbody></tbody></table></div>";
 
 }
-?>
 
+?>
+<div style="clear: both;"></div>
 
 <div id="divTablex" class="divPiazzole">
 
@@ -62,8 +64,30 @@ for ($snipet = 1; $snipet < 6; $snipet++) {
 
 
 
+<script type="text/javascript">
+	sessionStorage.ContatorePiazzola = 0;
 
+	setInterval(function(){ 
+		if (sessionStorage.ContatorePiazzola)
+			sessionStorage.ContatorePiazzola = Number(sessionStorage.ContatorePiazzola) + 1;
+		else
+			sessionStorage.ContatorePiazzola = 1;
 
+		if (sessionStorage.ContatorePiazzola >4)
+			sessionStorage.ContatorePiazzola = 1;
+
+		var offset = (sessionStorage.ContatorePiazzola - 1) * 6;
+		for (x=1; x<=6; x++)
+		{
+			setPiazzola(x + offset, 'tabpiazzola' + String(x));
+		}
+		
+		var Valore = "Il nuovo valore è: " + String(sessionStorage.ContatorePiazzola);
+		$("#myTimer").text(Valore);
+	 }, 7000);
+
+</script>
+<label id="myTimer" style="background-color: orange; font-size: 20px;" >0</label>
 <table id="tblCiao" width=400>
 	<thead>
 	<tr><td colspan=2> Ciaone! </td></tr>
@@ -88,8 +112,9 @@ $('#btnRefresh').click(function() {testWS();});
 //window.onload = managetable();
 
 function setPiazzola(piazzola, tabella) {
-	
-	var url=  'http://localhost/airo/piazzoleservice.php?min=' + piazzola + '&max=' + piazzola;
+	// Servizio Web che eroga il dato
+	// var url=  'http://localhost/airo/piazzoleservice.php?min=' + piazzola + '&max=' + piazzola;
+	var url=  'http://localhost/airo/api/?method=piazzole&format=json&min=' + piazzola + '&max=' + piazzola;
 	var elemento = '#' + tabella;
 
 	// Eliminazione righe pregresse
@@ -99,12 +124,12 @@ function setPiazzola(piazzola, tabella) {
 		$(elemento  + ' tbody tr').remove(); 
 		
 		$.getJSON(url, function(data) {
-			$.each(data, function(key, val) {
-				$(elemento).append('<tr><td>' + val.Cognome + '</td><td>' + val.Nome + '</td></tr>');
+			$.each(data.data, function(key, val) {
+				$(elemento).append('<tr><td>' + val.Posizione + '</td><td>' + val.Cognome + '</td><td>' + val.Nome + '</td></tr>');
 				 
 				});
 
-		$('#titolo' + tabella).value='Ciao CIao';
+		$('#titolo' + tabella).text('Piazzola ' + piazzola);
 					
 		$(elemento + ' thead').show(3000);
 		$(elemento + ' tbody').show(3000);	

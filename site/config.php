@@ -6,7 +6,10 @@ define("AIRO_CONN_USERNAME", "root");
 define("AIRO_CONN_PASSWORD", "");
 define("AIRO_CONN_DBNAME", "airophp");
 
-		
+// Indica la durata in millisecondi di ciascun ciclo di aggiornamento delle piazzole
+
+define("AIRO_DURATA_CICLO_PIAZZOLE", "10000"); 
+
 $servername = "localhost";
 // $username = "root";
 // $password = "";

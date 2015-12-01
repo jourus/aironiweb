@@ -90,100 +90,88 @@ MM_reloadPage(true);
 </script>
 
 <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=12)">
-<link href="stile.css" rel="stylesheet" type="text/css">
+<!--  <link href="stile.css" rel="stylesheet" type="text/css"> -->
+<link href="aironi.css" rel="stylesheet" type="text/css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 
  
-<body background="sfondo_class.gif" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<table width="100%" border="0">
-  <tr>
-    <td><table width="100%" border="0">
-        <tr class="posclassifica"> 
-          <td></td>
-          <td class="classe">- 
-            <?php echo $classe?><br>
-           </td>
-          <td class="classe"> -
-           	<?php echo $categoria ?> <br>
-          </td>
-          <td width="100">&nbsp;</td>
-        </tr>
-      </table></td>
-  </tr>
-  <tr>
-    <td height="440" valign="top"> <table width="100%" border="0">
-        <tr>
-          <td width="48%" valign="top"><table width="100%" border="0">
-              <tr class="posclassifica"> 
-                <td width="60"> <div align="center" class="posclassifica">POS</div></td>
-                <td> <div align="center">-Nome-</div></td>
-                <td>&nbsp;</td>
-                <td width="70"> <div align="right">Punti</div></td>
-                <td width="70"> <div align="right">Spot</div></td>
-                <!-- 2011.03.27 GFF Aggiunta colonna super--> 
-                <td width="70" > <div align="right">Super</div></td>
-                
-                <td>&nbsp;</td>
-              </tr>
-             
-             			 
+<body id="bodyClassifica">
+
+<h1>Classifica: <?php echo getClassi($classe) ?> - <?php echo getCategorie($categoria) ?>
+</h1>
+
+<div id="ClassificaSinistra" class="Classifica" >
+
+
+  
+          <table class='theadClassifica'>
+          		<thead>
+	              <tr> 
+	                <td class='headPOS'>POS</td>
+	                <td class='headNome'>Nome</td>
+	                <td class='headPunti'>Punti</td>
+	                <td class='headSpot'>Spot</td>
+	                <td class='headSuper'>Super</td>
+	                
+	              </tr>
+	           	</thead>
+             	
+             	<tbody class="posclassifica">		 
 				 <?php 
 				
-				  
+				 
 				 for ($x=0;$x<$limite1;$x++){
 				 	echo "<tr>";
 				 	$pos = $x + 1;
-				 	echo "<td>$pos</td>";
-				 	echo "<td>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
-				 	echo "<td>&nbsp;</td>";
-				 	echo "<td>" . $TuttiGliArcieri[$x]->Punti . "</td>";
-				 	echo "<td>" . $TuttiGliArcieri[$x]->Spot . "</td>";
-				 	echo "<td>" . $TuttiGliArcieri[$x]->Super . "</td>";
-				 	echo "<td>&nbsp;</td>";
+				 	echo "<td class='fieldPOS'>$pos</td>";
+				 	echo "<td class='fieldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+					//echo "<td>&nbsp;</td>";
+				 	echo "<td class='fieldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+				 	echo "<td class='fieldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
+				 	echo "<td class='fieldSuper'>" . $TuttiGliArcieri[$x]->Super . "</td>";
 				 	echo "</tr>";
 				 	
 				 }
 				 
 				 ?>
-             
-          </table></td>
-          <td valign="top">
-		  <table width="100%" border="0">
+             	</tbody>
+          </table>
+          
+          </div>
+<div id="ClassificaDestra" class="Classifica">
+
+          <table class='theadClassifica'>
 		  
 		  <?php
 		  		
 		  		if($limite2 != -1) // Gli arcieri sono più di 24 in questa categoria. Esiste una seconda metà della classifica 
 		  		{
 		  			
-			  		echo 	"<tr class=\"posclassifica2\"> 
-			  		      	<td width=50> <div align=\"right\">&nbsp;</div></td>
-			                <td width=60> <div align=\"center\" class=\"posclassifica2\">POS</div></td>
-			                <td> <div align=\"center\">Nome</div></td>
-			                <td>&nbsp;</td>
-			                <td width=70> <div align=\"right\">Punti</div></td>
-			                <td width=70> <div align=\"right\">Spot</div></td>
-			                 <td width=70> <div align=\"right\">Super</div></td>
-			                <td>&nbsp;</td>
-				              </tr>
+			  		echo 	"<thead>
+	              <tr> 
+	                <td class='headPOS'>POS</td>
+	                <td class='headNome'>Nome</td>
+	                <td class='headPunti'>Punti</td>
+	                <td class='headSpot'>Spot</td>
+	                <td class='headSuper'>Super</td>
+	                
+	              </tr>
+	           	</thead>
 					 ";
 				}
 		  		
 	
 				for ($x= $MaxRigheArcieriInClassifica + 1;$x<$limite2;$x++){
-					echo "<tr>";
-					
-					$pos = $x ;
-					
-					echo "<td>$pos</td>";
-					echo "<td>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
-					echo "<td>&nbsp;</td>";
-					echo "<td>" . $TuttiGliArcieri[$x]->Punti . "</td>";
-					echo "<td>" . $TuttiGliArcieri[$x]->Spot . "</td>";
-					echo "<td>" . $TuttiGliArcieri[$x]->Super . "</td>";
-					echo "<td>&nbsp;</td>";
-					echo "</tr>";
-				
+				 	echo "<tr>";
+				 	$pos = $x + 1;
+				 	echo "<td class='fieldPOS'>$pos</td>";
+				 	echo "<td class='fieldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+					//echo "<td>&nbsp;</td>";
+				 	echo "<td class='fieldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+				 	echo "<td class='fieldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
+				 	echo "<td class='fieldSuper'>" . $TuttiGliArcieri[$x]->Super . "</td>";
+				 	echo "</tr>";
 				}
 				
 				?>
@@ -192,22 +180,16 @@ MM_reloadPage(true);
 			
 
 			
-		  </td>
-        </tr>
-    </table></td>
-  </tr>
-</table>
+		  
+</div>
 
 
+<div class="tConsegnascore">
+  <h2>
+    Situazione Consegna Scores
+  </h2>
 
-<table width="100%" border="0">
-  <tr class="posclassifica2">
-    <td class="PloticusTitle">Situazione Consegna Scores </td>
-  </tr>
-  <tr class="tabellapodio">
-    <td class="tabellapodio">
-	<!--tabella Piazzole-->
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <table  width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           
           
@@ -243,11 +225,11 @@ for($i = 1; $i <= $NumeroPiazzoleGara ; $i++)
 		
 				   
 			
-		echo "<td class=\"$piazzscoreconsyesno\">$i</td>";
+		echo "<td class='consegnascores $piazzscoreconsyesno'>$i</td>";
 		
 		if ($i == $NumeroPiazzoleGara / 2)
 		{
-			echo "</tr><tr class=\"tabellapodio\">";
+			echo "</tr><tr>";
 		}
 				
 		
@@ -266,22 +248,17 @@ for($i = 1; $i <= $NumeroPiazzoleGara ; $i++)
           
         </tr>
       </table>
-	  </td>
-  </tr>
- 
-  <tr class="tabellapodio">
-    <td class="vocimenu">Legenda</td>
-  </tr>
-  <tr class="tabellapodio">
-    <td class="tabellapodio"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	 
+
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="50%" class="piazzscoreconsyes">Piazzola che ha  CONSEGNATO</td>
-        <td class="piazzscoreconsno">Piazzola che NON ha CONSEGNATO</td>
+        <td width="50%" class="consegnascores piazzscoreconsyes">Piazzola che ha  CONSEGNATO</td>
+        <td class="consegnascores piazzscoreconsno">Piazzola che NON ha CONSEGNATO</td>
       </tr>
-    </table></td>
-  </tr>
-</table>
+    </table>
+  </div>
 </body>
+
 </html>
 
 

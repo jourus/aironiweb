@@ -82,7 +82,7 @@ var arrCompagnie= [<?php echo $arraycompagnie?>] ;
 var indice = 0 ;
 var indicecomp = 0 ;
 var tiposchermata = 0 ;
-var secondiciclo = 4000 ;
+var secondiciclo = 7000 ;
 var TutteCompagnie = 0;
 var TutteClassi = 0 ;
 // 0 podio 123 , 1 classifica completa , 2 foto varie, 3 classifica compagnie

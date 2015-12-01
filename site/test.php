@@ -5,85 +5,111 @@
 <link href="stile.css" rel="stylesheet" type="text/css">
 <link href="stilePiazzole.css" rel="stylesheet" type="text/css">
 <script src="js/jQuery.js"></script>
-<script type="text/javascript">
-
-function setPiazzola(piazzola, tabella) {
-	// Servizio Web che eroga il dato
-	// var url=  'http://localhost/airo/piazzoleservice.php?min=' + piazzola + '&max=' + piazzola;
-	var myUrl=  'http://localhost/airo/api/?method=piazzole&format=json&min=' + piazzola + '&max=' + piazzola;
-	var elemento = '#' + tabella;
-
-	// Eliminazione righe pregresse
-	$(elemento + ' thead').hide(2000);
-	$(elemento + ' tbody').hide(2000, function() { 
-
-		$(elemento  + ' tbody tr').remove(); 
-
-
-		
-		jQuery.ajax({
-		    type: "GET",
-		    url: myUrl,
-		    dataType: "json",
-		    success:  function (data, status, jqXHR) {
-	            // do something
-		    	$.each(data.data, function(key, val) {
-					$(elemento).append('<tr><td>' + val.Posizione + '</td><td>' + val.Cognome + '</td><td>' + val.Nome + '</td></tr>');
-					 
-					});
-		
-					$('#titolo' + tabella).text('Piazzola ' + piazzola);
-								
-					$(elemento + ' thead').show(3000);
-					$(elemento + ' tbody').show(3000);	
-					
-	        },
-	    
-	        error: function (jqXHR, status) {
-	            // error handler
-				alert("non va! :-/ ");
-	       	}
-		});
-		
-	});
-
-
-
-		
-	/*	$.getJSON(url, function(data) {
-			$.each(data, function(key, val) {
-				$(elemento).append('<tr><td>' + val.Posizione + '</td><td>' + val.Cognome + '</td><td>' + val.Nome + '</td></tr>');
-				 
-				});
-
-		$('#titolo' + tabella).text('Piazzola ' + piazzola);
-					
-		$(elemento + ' thead').show(3000);
-		$(elemento + ' tbody').show(3000);	
-		});
-	});
-		*/
-
-	
-	
-}
-
-
-</script> 
+ 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" >
+
+<script type="text/javascript">
+alert(decodeClasse('CAM'));
+function decodeClasses(idClasse) {
+	// Questa funzione decodifica l'id classe e restituisce la relativa descrizione
+	var url=  'api/?method=classi&format=json&cla=' + idClasse;
+	$.getJSON(url, function(data) {
+		$.each(data.data, function(key, val) {alert(val.DescrizioneClasse);});
+	});
+	
+
+}  
+
+//Questa funzione chiama l'api che decodifica l'id di una classe e restituisce la relativa descrizione
+function decodeClasse(idClasse) {
+	var esito="";
+	try {
+		var url=  'api/?method=classi&format=json&cla=' + idClasse;
+
+		var data = loadJSON(url);
+		if (data.data.length > 0){
+			return data.data[0].DescrizioneClasse;
+		}
+		else
+			return null;
+		
+		
+	}
+	catch (exception) {
+		
+		// return "ciao";
+	}
+
+	return 'zio ' + esito;
+}  
+
+
+
+//Load JSON text from server hosted file and return JSON parsed object
+function loadJSON(filePath) {
+  // Load json file;
+  var json = loadTextFileAjaxSync(filePath, "application/json");
+  // Parse json
+  return JSON.parse(json);
+}   
+
+// Load text with Ajax synchronously: takes path to file and optional MIME type
+function loadTextFileAjaxSync(filePath, mimeType)
+{
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.open("GET",filePath,false);
+  if (mimeType != null) {
+    if (xmlhttp.overrideMimeType) {
+      xmlhttp.overrideMimeType(mimeType);
+    }
+  }
+  xmlhttp.send();
+  if (xmlhttp.status==200)
+  {
+    return xmlhttp.responseText;
+  }
+  else {
+    // TODO Throw exception
+    return null;
+  }
+}
+
+
+</script>
+
 <?php 
 
-for ($snipet = 1; $snipet <= 6; $snipet++) {
+// var myUrl=  'http://localhost/airo/api/?method=piazzole&format=json&min=' + piazzola + '&max=' + piazzola;
 
-	echo "<div id='divTable$snipet' class='divPiazzole'> <table id='tabpiazzola$snipet' class='tblPiazzole'>
-	<thead><tr><td colspan=3><label id='titolotabpiazzola$snipet'>Piazzola $snipet</label></td></tr></thead>
-	<tbody></tbody></table></div>";
+ini_set('user_agent', "PHP"); // github requires this
+$api = 'http://localhost';
+$url = $api . '/airo/api/?method=piazzole&format=json&min=5&max=5';
+// make the request
+$response = file_get_contents($url);
+// check we got something back before decoding
+if(false !== $response) {
+    $gists = json_decode($response, true);
+} // otherwise something went wrong
 
+echo "Ci sono " . count($gists["data"]) . " elementi. <br>";
+
+foreach ($gists["data"] as &$Arcieri) {
+	// echo "ciao $value<br>"; //$value . "<br>";
+//echo is_array($value);
+	echo "------------------------------------------------<br>";
+	foreach ($Arcieri as $key=>$Value) {
+		echo "il valore di $key è $Value<br>";
+	}
+	//echo $gists;
+	//json_decode($json)
 }
+echo min($gists);
+
+//echo sizeof($gists[1]);
 ?>
-  <input type="button" value="Ciao" onclick="setPiazzola(1, 'tabpiazzola1');" />
+
 
   
 </body>

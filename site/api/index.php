@@ -186,6 +186,37 @@ if( strcasecmp($apiMethod,'piazzole') == 0){
 	$response['data'] = getPiazzole($piazzolaDa, $piazzolaA);
 }
 
+// Method c: categorie
+if( strcasecmp($apiMethod,'categorie') == 0){
+
+	if (isset($_GET['cat'])) {
+		$idCategoria = $_GET['cat'];
+	}
+	else {
+		$idCategoria =null;
+	}
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getCategorie($idCategoria);
+}
+
+
+// Method c: classi
+if( strcasecmp($apiMethod,'classi') == 0){
+
+	if (isset($_GET['cla'])) {
+		$idClasse = $_GET['cla'];
+	}
+	else {
+		$idClasse =null;
+	}
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getClassi($idClasse);
+}
+
 // --- Step 4: Deliver Response
 
 // Return Response to browser

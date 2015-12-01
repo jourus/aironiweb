@@ -6,15 +6,17 @@ include 'funzioni.php';
 
 if (isset($_GET['classe'])) {
 	$classe = $_GET['classe'];
+	$nomeClasse = getClassi($classe);
 }
 else
-	$classe = "";
+	$classe = $nomeClasse= "";
 
 	if (isset($_GET['categoria'])) {
 		$categoria = $_GET['categoria'];
+		$nomeCategoria = getCategorie($categoria);
 	}
-	else
-		$categoria = "";
+	else 
+		$categoria = $nomeCategoria = "";
 
 
 		// Create connection
@@ -148,25 +150,25 @@ MM_reloadPage(true);
 </script>
 <link href="stile" rel="styleshpatht" type="text/css">
 <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=12)">
-<link href="stile.css" rel="stylesheet" type="text/css">
+<link href="aironi.css" rel="stylesheet" type="text/css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 
 
-<body background="<?php echo $sfondo ?>" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" tracingsrc="sfondo-comp.gif" tracingopacity="100">
-<div id="classe" style="position:absolute; left:242px; top:19px; width:201px; height:23px; z-index:1;"> 
-  <div align="left" class="categoria"><?php echo $classe?></div>
+<body style="background-image: url('immagini/<?php echo $sfondo ?>'); margin: 0px;">
+<div id="classe" style="position:absolute; left:242px; top:31px; width:315px; height:23px; z-index:1;"> 
+  <div align="left" class="categoria"><?php echo $nomeClasse?></div>
 </div>
-<div id="categoria" style="position:absolute; left:242px; top:64px; width:315px; height:28px; z-index:2;" class="classe"> 
-  <div align="left"><?php echo $categoria ?></div>
+<div id="categoria" style="position:absolute; left:242px; top:71px; width:315px; height: 40px; z-index:2;" class="classe"> 
+  <div align="left"><?php echo $nomeCategoria ?></div>
 </div>
-<div id="punti2" style="position:absolute; left:154px; top:445px; width:130px; height:19px; z-index:3" class="punti"><?php echo $punti2?></div>
-<div id="spot2" style="position:absolute; left:153px; top:472px; width:133px; height:20px; z-index:4" class="spot"><?php echo $spot2?></div>
+<div id="punti2" class="punti"><?php echo $punti2?></div>
+<div id="spot2"  class="spot"><?php echo $spot2 . ' (Super: ' . $super2 . ')'?></div>
 <div id="foto2" style="position:absolute; left:100px; top:161px; width:190px; height:253px; z-index:5"><img src="immagini/foto/<?php echo $foto2?>" width="190" height="253"></div>
-<div id="punti1" style="position:absolute; left:371px; top:385px; width:130px; height:19px; z-index:3" class="punti"><?php echo $punti1 ?></div>
-<div id="spot1" style="position:absolute; left:371px; top:414px; width:130px; height:20px; z-index:4" class="spot"><?php echo $spot1 ?></div>
-<div id="punti3" style="position:absolute; left:580px; top:457px; width:130px; height:19px; z-index:3" class="punti"><?php echo $punti3 ?></div>
-<div id="spot3" style="position:absolute; left:579px; top:481px; width:133px; height:20px; z-index:4" class="spot"><?php echo $spot3 ?></div>
+<div id="punti1"  class="punti"><?php echo $punti1 ?></div>
+<div id="spot1"  class="spot"><?php echo $spot1 . ' (Super: ' . $super1 . ')'?></div>
+<div id="punti3" class="punti"><?php echo $punti3 ?></div>
+<div id="spot3"  class="spot"><?php echo $spot3 . ' (Super: ' . $super3 . ')'?></div>
 <div id="foto1" style="position:absolute; left:310px; top:105px; width:190px; height:253px; z-index:5" class="anagrafica"><img src="immagini/foto/<?php echo $foto1?>" width="190" height="253"></div>
 <div id="foto3" style="position:absolute; left:522px; top:170px; width:190px; height:253px; z-index:5"><img src="immagini/foto/<?php echo $foto3 ?>" width="190" height="253"></div>
 <div id="anagrafica1" style="position:absolute; width:190px; height:21px; z-index:6; left: 100px; top: 418px; background-color: #DEEFFF; layer-background-color: #DEEFFF; border: 1px none #000000;" class="anagrafica"> 

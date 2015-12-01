@@ -87,7 +87,7 @@ MM_reloadPage(true);
 </script>
 
 <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=12)">
-<link href="stile.css" rel="stylesheet" type="text/css">
+<link href="aironi.css" rel="stylesheet" type="text/css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 
@@ -101,23 +101,20 @@ MM_reloadPage(true);
 
 
 
-<div class="classificaPerCompagnia">
+<div class="Classifica">
            
               
                <?php 
 				
                
                
-               $tblHeader = "<table width='100%' border='0'>
+               $tblHeader = "<table width='100%' border='0'><thead class='theadClassifica'>
               <tr class='posclassifica'> 
-                <td width='60'> <div align='center' class='posclassifica'>CLASSE CATEGORIA</div></td>
-                <td> <div align='center'>Nome</div></td>
-                <td>&nbsp;</td>
-                <td width='80'> <div align='right'>Punti</div></td>
-                <td width='80'> <div align='right'>Spot</div></td>
-                <td width='35'>&nbsp;</td>
-              </tr>";
-               $tblFooter = "</table>";
+		        <td width='50' class='headPOS'>Classe Categoria</td>
+                <td class='headNome'>Nome</td>
+	                <td class='headPunti'>Punti</td>
+	                <td class='headSpot'>Spot</td>              </tr></thead><tbody>";
+               $tblFooter = "</tbody></table>";
                
                
                echo $tblHeader;
@@ -125,38 +122,20 @@ MM_reloadPage(true);
 				 for ($x=0;$x<$limite1;$x++){
 				 	echo "<tr class='tabellapodio'>";
 				 	$pos = $x + 1;
-				 	echo "<td class='tabellapodio' style='text-align: center;'>" . $TuttiGliArcieri[$x]->Classe . " " . $TuttiGliArcieri[$x]->Categoria . "</td>";
-				 	echo "<td style='text-align: center;'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
-				 	echo "<td>&nbsp;</td>";
-				 	echo "<td class='tabellapodio' style='text-align: right;'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
-				 	echo "<td class='tabellapodio' style='text-align: right;'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
-				 	echo "<td>&nbsp;</td>";
+				 	echo "<td class='fldNome'>" . $TuttiGliArcieri[$x]->Classe . " " . $TuttiGliArcieri[$x]->Categoria . "</td>";
+				 	echo "<td class='fldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+				 	echo "<td class='fldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+				 	echo "<td class='fldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
 				 	echo "</tr>";
 				 	
 				 }
 				echo $tblFooter;
-				
-				 ?>
-				
-				 
-
-</div>
-<div class="classificaPerCompagnia">
-
- <?php 
-				
-               
-               
-               $tblHeader = "<table width='100%' border='0'>
-              <tr class='posclassifica'> 
-                <td width='60'> <div align='center' class='posclassifica'>CLASSE CATEGORIA</div></td>
-                <td> <div align='center'>Nome</div></td>
-                <td>&nbsp;</td>
-                <td width='80'> <div align='right'>Punti</div></td>
-                <td width='80'> <div align='right'>Spot</div></td>
-                <td width='35'>&nbsp;</td>
-              </tr>";
-               $tblFooter = "</table>";
+			 
+			
+			echo "</div><div class='classificaPerCompagnia'>";
+			    
+			               
+    
                
                
                if ($limite2 > 0) {
@@ -166,12 +145,10 @@ MM_reloadPage(true);
 							 for ($x=26;$x<$limite2;$x++){
 							 	echo "<tr class='tabellapodio'>";
 							 	$pos = $x + 1;
-							 	echo "<td class='tabellapodio' style='text-align: center;'>" . $TuttiGliArcieri[$x]->Classe . " " . $TuttiGliArcieri[$x]->Categoria . "</td>";
-							 	echo "<td style='text-align: center;'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
-							 	echo "<td>&nbsp;</td>";
-							 	echo "<td class='tabellapodio' style='text-align: right;'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
-							 	echo "<td class='tabellapodio' style='text-align: right;'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
-							 	echo "<td>&nbsp;</td>";
+							 	echo "<td class='fldNome'>" . $TuttiGliArcieri[$x]->Classe . " " . $TuttiGliArcieri[$x]->Categoria . "</td>";
+							 	echo "<td class='fldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+							 	echo "<td class='fldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+							 	echo "<td class='fldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
 							 	echo "</tr>";
 							 	
 							 }

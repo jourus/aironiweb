@@ -12,7 +12,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 
 <body>
-<h1>Piazzole</h1>
+<h1 id="titoloPiazzole">Piazzole</h1>
+<div id="bigContainer">
 <?php 
 require 'config.php';
 
@@ -30,7 +31,7 @@ for ($snipet = 1; $snipet <= 6; $snipet++) {
 }
 
 ?>
-
+</div>
 
 <script type="text/javascript">
 	sessionStorage.ContatorePiazzola = 0;
@@ -69,12 +70,12 @@ function toTitleCase(str)
 function setPiazzola(piazzola, tabella, div) {
 	// Servizio Web che eroga il dato
 	// var url=  'http://localhost/airo/piazzoleservice.php?min=' + piazzola + '&max=' + piazzola;
-	var url=  'http://localhost/airo/api/?method=piazzole&format=json&min=' + piazzola + '&max=' + piazzola;
+	var url=  'api/?method=piazzole&format=json&min=' + piazzola + '&max=' + piazzola;
 	var elemento = '#' + tabella;
 
 	// Eliminazione righe pregresse
 	//$(elemento + ' thead').hide(2000);
-	$('#' + div).fadeOut(2000, function() { 
+	$('#' + div).fadeOut(1500, function() { 
 
 		$(elemento  + ' tbody tr').remove(); 
 		
@@ -88,7 +89,7 @@ function setPiazzola(piazzola, tabella, div) {
 		$('#titolo' + tabella).text('Piazzola ' + piazzola);
 					
 		
-		$('#' + div).fadeIn(3000);	
+		$('#' + div).fadeIn(2000);	
 		});
 	});
 

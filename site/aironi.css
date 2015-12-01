@@ -1,0 +1,305 @@
+@CHARSET "UTF-8";
+
+@font-face {
+    font-family: Gotham-Light;
+    src: url("fonts/Gotham-Light.otf");
+    
+}
+
+@font-face {
+    font-family: Gotham-Medium;
+    src: url("fonts/Gotham-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Gotham-Bold;
+    src: url("fonts/Gotham-Bold.otf");
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+h1 {
+	text-align: center;
+	font-family: Gotham-Medium;
+  	font-size: 20px;
+  	padding-top: 8px;
+  	padding-bottom: 8px;
+}
+
+
+
+
+h2 {
+	text-align: center;
+	font-family: Gotham-Medium;
+  	font-size: 13px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+body {
+	
+		margin: 0 0 0 0;
+		background-image: url('immagini/sfondo_class.gif');
+	
+}
+
+thead {
+	text-align: center;
+	font-family: Gotham-Medium;
+  	font-size: 13px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	
+}
+
+table {
+	font-size: 13px;
+	font-family: Gotham-Light;
+	text-align: center;
+	width: 100%;
+}
+
+
+
+/*
+Specifiche per il podio
+*/
+#podioBody {
+	/* background-image: null; */
+	 background-image: none;
+	/* background-image: url('immagini/sfondo_bosco_800x600.jpg');	*/
+	/* background-image: url('immagini/sfondo-tronco-sezione-800x600.png'); */
+	
+	
+}
+
+#divMainPodio {
+	background-image: url('immagini/sfondolegnovenature-trasparente.png');
+	opacity: 1;
+	width: 800px;
+	height: 600px;
+	border: 0px;
+	margin: 0px;
+}
+
+#divPodio1{
+	left: 260px; top: 30px;
+}
+
+#divPodio2{
+	left: 10px; top: 170px;
+}
+
+#divPodio3{
+	left: 510px; top: 170px;
+}
+
+.divPodio {
+	position:fixed; 
+	height: 430px; 
+	width: 290px; 
+	background-image: url('immagini/pergamena-grigioblu-con-sfondo-430x290.png') ;
+	background-repeat: no-repeat;
+	opacity: 1;
+	
+}
+
+/**
+***
+***		Podio OLD - Inizio
+***		Eliminare DOPO il rilascio del podio nuovo
+***/
+
+.classe, .categoria {
+	font-family: Gotham-Bold;
+	font-size: 20px;
+	font-style: normal;
+	color: #000000;
+	}
+.punti, .spot, .anagrafica {
+
+	font-family: Gotham-Bold;
+	font-size: 13px;
+	font-style: normal;
+	color: #000000;
+	position: absolute;
+	width: 133px;
+	height: 20px;
+	z-index: 3
+}
+
+#punti1 {left:374px; top:386px; }
+#spot1 {left:374px; top:415px; }
+#punti2  {left: 157px; top: 445px;}
+#spot2  {left: 157px; top: 472px; }
+#punti3 {left:583px; top:457px; }
+#spot3 {left:583px; top:485px; }
+
+
+/**
+***		Podio OLD - Fine
+***		Eliinare fino qui
+***/
+
+
+/*
+Inizio griglia impaginazione consolle
+
+*/
+	
+div#speciali {
+	padding: 10px;
+	width: 200px;
+	position: absolute;
+	top: 0;
+	left: 600
+	
+	
+}
+
+div#comandimanuali{
+	width: 550px;
+	float: left;
+	background-color: white;
+	
+}
+
+.righe 
+{
+	background-color: #FFFFFF;
+	cellpadding=3px; 
+	cellspacing=1px;
+}
+
+.righealt 
+{
+	background-color: #FFFF9E;
+	cellpadding=3px; 		
+	cellspacing=1px;
+		
+}
+
+.interlinea
+{
+	background-image: url("immagini/linea.jpg");
+	background-size: 100px 4px;
+    background-repeat: no-repeat;
+	
+}
+.interlinea-vuota
+{
+	background-color: #FFFFFF;
+	background-size: 100px 4px;
+    background-repeat: no-repeat;	
+    background-clip: content-box;
+}
+.interlinea-back
+{
+	background-image: url("immagini/linead.jpg");
+	height: 4px;
+	
+}
+
+/*
+
+*/
+/*
+Specifiche per la classifica
+Scores consegnati / da consegnare
+*/
+
+
+.Classifica {
+	float: left;
+	width: 48.5%;
+	height: 455px;
+  	border : none;
+	border-radius: 10px;
+  background-color: rgba(90, 90, 160, 0.25);	
+  box-shadow: 5px 5px 10px 2px #BBB;
+  /* height: 170px; */
+  margin-bottom: 10px;
+  font-family: Gotham-Light;
+  margin-left: 6px;
+
+
+}
+
+.theadClassifica {
+	padding: 5px 5px 0px 5px;
+}
+.headPOS
+{
+	text-align: center;
+	width: 25px;
+}
+
+.headPunti, .headSpot, .headSuper
+{
+	text-align: center;
+	width: 30px;
+}
+
+	             
+
+.fieldNome
+{
+	text-align: center;
+	width: auto;
+}
+
+
+
+.tConsegnascore
+{
+	clear:both;
+	width: 98%;
+	border-radius: 10px;
+	background-color: rgba(90, 90, 160, 0.25);	
+  	box-shadow: 5px 5px 10px 2px #BBB;
+	font-family: Gotham-Medium;
+	font-size: 11;
+	margin-left: 5px;
+	
+}
+.consegnascores
+{
+	font-size: 12;
+	text-align: center;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	
+}
+.consegnascores.piazzscoreconsyes
+{
+	/* background-color: #7FFF00; */
+	color: #55F;
+}
+ 
+.consegnascores.piazzscoreconsno
+{
+	color: #F44;
+	
+}
+
+
+/*
+	Inizio Classifica per Compagnia
+*/
+
+
+.classificaPerCompagnia {
+	float: left; 
+	width: 48%; 
+	border: 4px; 
+	margin: 3px;
+	font-family: fantasy;
+}

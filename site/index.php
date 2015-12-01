@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Aironi Consolle</title>
-<link href="stile.css" rel="stylesheet" type="text/css">
+<link href="aironi.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/JavaScript">
 
 	function MM_openBrWindow(theURL,winName,features) { //v2.0
@@ -15,14 +15,16 @@
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0">
 <div>
 <div id="comandimanuali">
-<table width=80% border="0"  bordercolor="#999999">
-              <tr class="intestazioni"> 
-                <td width=300px> <div align="right">Podio</div></td>
-                <td width=100px> <div align="center">Classe</div></td>
-                <td width=100px> <div align="center">Categoria</div></td>
-                <td width=300px> <div align="left">Classifica</div></td>
-              </tr>
+<table width=70% border="0"  bordercolor="#999999">
               
+              <thead>
+              <tr class="intestazioni"> 
+                <td width=200px> Podio</td>
+                <td> Classe</td>
+                <td> Categoria</td>
+                <td width=200px> Classifica</td>
+              </tr>
+              </thead>
 <?php
 	
 	include 'config.php';
@@ -119,7 +121,7 @@
               </tr>
               <tr> 
                 <td width="200" class="vocimenu">Benvenuti</td>
-                <td><div align="center"><a href="#" onClick="MM_openBrWindow('benveuti.htm','onda','toolbar=yes,width=800,height=600')"><img src="immagini/computer.gif" width="14" height="14"></a></div></td>
+                <td><div align="center"><a href="#" onClick="MM_openBrWindow('benvenuti.html','onda','toolbar=yes,width=800,height=600')"><img src="immagini/computer.gif" width="14" height="14"></a></div></td>
               </tr>
               <tr> 
                 <td width="200"><img src="immagini/linea.jpg" width="200" height="4"></td>

@@ -18,25 +18,6 @@
     font-weight: bold;
 }
 
-@font-face {
-    font-family: 'bonvenocflight';
-    src: url('fonts/bonvenocf/BonvenoCF-Light-webfont.eot');
-    src: url('fonts/bonvenocf/BonvenoCF-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/bonvenocf/BonvenoCF-Light-webfont.woff') format('woff'),
-         url('fonts/bonvenocf/BonvenoCF-Light-webfont.ttf') format('truetype'),
-         url('fonts/bonvenocf/BonvenoCF-Light-webfont.svg#bonvenocflight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-@font-face {
-    font-family: Arcon;
-    src: url("fonts/Arcon-Regular.otf");
-    font-weight: normal;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -96,14 +77,13 @@ Specifiche per il podio
 	 background-image: none;
 	/* background-image: url('immagini/sfondo_bosco_800x600.jpg');	*/
 	/* background-image: url('immagini/sfondo-tronco-sezione-800x600.png'); */
-	background-color: #000;
+	
 	
 }
 
 #divMainPodio {
-	background-image: url("immagini/AironeInFiligranaNeg.png");
+	background-image: url('immagini/sfondolegnovenature-trasparente.png');
 	opacity: 1;
-	background-repeat: no-repeat;
 	width: 800px;
 	height: 600px;
 	border: 0px;
@@ -111,26 +91,25 @@ Specifiche per il podio
 }
 
 #divPodio1{
-	left: 295px; top: 50px;
+	left: 260px; top: 30px;
 }
 
 #divPodio2{
-	left: 45px; top: 190px;
+	left: 10px; top: 170px;
 }
 
 #divPodio3{
-	left: 540px; top: 230px;
+	left: 510px; top: 170px;
 }
 
 .divPodio {
 	position:fixed; 
-	height: 325px; 
-	width: 200px; 
-	font-family: Arcon;
-	background-color: rgba(110, 141, 230, 0.5);
-	box-shadow: 5px 5px 10px 2px #BBB;
-	/*opacity: 0.6;
-	*/
+	height: 430px; 
+	width: 290px; 
+	background-image: url('immagini/pergamena-grigioblu-con-sfondo-430x290.png') ;
+	background-repeat: no-repeat;
+	opacity: 1;
+	
 }
 
 /**

@@ -5,132 +5,151 @@
 <title>Insert title here</title>
 <link href="aironi.css" rel="stylesheet" type="text/css">
 
+<script src="js/jquery.js"></script>
+<script src="js/Library.js"></script>
+<script type="text/javascript">
 
+function SetCategoria(objectName, categoria) {
+	var url=  'api/?method=categorie&format=json&cat=' + categoria;
+	$.getJSON(url, function(data) {
+		
+		if (data.data.length > 0){
+			$(objectName).text(data.data[0].DescrizioneCategoria);
+	
+		}
+		
+	});
+ 
+}
+function SetClasse(objectName, classe) {
+	var url=  'api/?method=classi&format=json&cla=' + classe;
+	$.getJSON(url, function(data) {
+		
+		if (data.data.length > 0){
+			$(objectName).text(data.data[0].DescrizioneClasse);
+	
+		}
+		
+	});
+ 
+}
+ 
+SetClasse("#DescClasse", "CAM");
+SetCategoria("#DescCategoria", "RI");
 
+function SetPodio(classe, categoria)  {
+	var url=  'api/?method=podio&format=json&cla=' + classe + '&cat=' + categoria;
+	$.getJSON(url, function(data) {
+		
+		var conta = 1;
+		$.each(data.data, function(key, val) {
+		//if (data.data.length > 0){
+			//$('#NomeArciere3').text(data.data[0].arciere);
+				
+			$('#NomeArciere' + conta).text(val.arciere);
+			$('#PodioPunti' + conta).text(val.punti);
+			$('#PodioSpot' + conta).text(val.spot);
+			$('#PodioSuper' + conta).text(val.superspot);
+			$('#FotoPodio' + conta).attr('src','immagini/foto/' + val.foto);
+			
+			conta++;
+		});
+		
+	});
+ 
+}
+
+SetPodio('CAF', 'RI')
+
+</script>
 </head>
 
 
 
-<body id="podioBody2" style="background-image: none;">
+<body id="podioBody">
 <div id='divMainPodio'>
-<h1 style="color: #FFF;">Cacciatore Maschile Ricurvo</h1>
 
-<!-- <div style="position:fixed; left: 0px; bottom: 0px; height: 5%; width: 100%; background-color: orange; ">
-
+<!-- <div style="width: 800px;">
+<p id="DescClasse" Class="DescClasseCategoria" >Cacciatori Maschile</p>
+<p id="DescCategoria" Class="DescClasseCategoria"  >Arco Nudo </p>
 </div> -->
-<div style="position: fixed; 
+<p>
+  <span Class="DescClasseCategoria" id="DescClasse">testo 1</span>
+  <span Class="DescClasseCategoria" id="DescCategoria">testo 2</span>
+</p> 
 
-    transform: rotate(-90deg);
-    transform-origin: 0% 0%;
-    text-shadow: -5px 5px 3px #BBBBBB;
-height: 30px; width: 325px; 
-/*left: 123px; top: 197px;*/
-left: 267px; top: 375px;
-color: rgb(110, 141, 230);
-text-align: center;
-font-size: 22px; 
-font-family: bonvenocflight;
-">
-1° CLASSIFICATO
+<div  class="BarraVerticalePodio" id="BarraVerticalePodio1">1° CLASSIFICATO </div>
+<div  class="BarraVerticalePodio" id="BarraVerticalePodio2">2° CLASSIFICATO </div>
+<div  class="BarraVerticalePodio" id="BarraVerticalePodio3">3° CLASSIFICATO </div>
 
-</div>
 
-<div style="position: fixed; 
-
-    transform: rotate(-90deg);
-    transform-origin: 0% 0%;
-	text-shadow: -5px 5px 3px #BBBBBB;
-height: 30px; width: 325px; 
-/*left: 123px; top: 197px;*/
-left: 15px; top: 515px;
-color: rgb(110, 141, 230);
-text-align: center;
-font-size: 22px; 
-font-family: bonvenocflight;
-">
-2° CLASSIFICATO
-
-</div>
-<div style="position: fixed; 
-
-    transform: rotate(-90deg);
-    transform-origin: 0% 0%;
-    text-shadow: -5px 5px 3px #BBBBBB;
-height: 30px; width: 325px; 
-/*left: 123px; top: 197px;*/
-left: 510px; top: 555px;
-color: rgb(110, 141, 230);
-text-align: center;
-font-size: 22px; 
-font-family: bonvenocflight;
-">
-3° CLASSIFICATO
-
-</div>
 
 <div id="divPodio2" class='divPodio'>
-<img src="immagini/foto/Foto3.jpg" width="180" height="245" 
-style="padding-left: 10px; padding-top: 10px;" />
-<p style="font-size: 14px; font-family: Gotham-Medium; color: #ffffa9; text-align: center; padding-top: 4px; padding-bottom: 4px;">Mario Rossi</p>
-<table>
-<thead style="font-size: 9px; font-family: bonvenocflight; color: #ffffa9;">
-<tr>
-<td style="width: 8px;"></td><td>Punti</td><td>Super</td><td>Spot</td><td style="width: 8px;">
-</tr>
-</thead>
-<tbody style="font-size: 11px; font-style: Arcon;">
-<tr><td></td>  
- <td style="font-size: 14px; font-style: Arcon; color: #ffffa9;">230</td>
-  <td style="font-size: 14px; font-style: Arcon; color: #ffffa9;">12</td>
-   <td style="font-size: 14px; font-style: Arcon; color: #ffffa9; ">4</td>
+	<img id="FotoPodio2" src="immagini/foto/Foto3.jpg" class="FotoPodio"  />
 
-<td></td>
-</tr>
-</tbody>
-</table>
+	<p id="NomeArciere2" class="NomeArciere" >Mario Rossi</p>
 
+	<table>
+		<thead class="HPunteggi">
+			<tr>
+				<td></td><td>Punti</td><td>Spot</td><td>Super</td><td>
+			</tr>
+		</thead>
+		<tbody  class="BPunteggi">
+		<tr	>
+			<td></td>  
+			<td id="PodioPunti2">230</td>
+			<td id="PodioSpot2">12</td>
+			<td id="PodioSuper2">54</td>
+			<td></td>
+		</tr>
+		</tbody>
+	</table>
 </div>
 <div id="divPodio1" class='divPodio'>
-<img src="immagini/foto/Foto3.jpg" width="180" height="245" 
-style="padding-left: 10px; padding-top: 10px;" />
-<p style="font-size: 14px; font-family: Gotham-Medium; color: #ffffa9; text-align: center; padding-top: 4px; padding-bottom: 4px;">Mario Rossi</p>
-<table>
-<thead style="font-size: 9px; font-family: bonvenocflight; color: #ffffa9;">
-<tr>
-<td style="width: 8px;"></td><td>Punti</td><td>Super</td><td>Spot</td><td style="width: 8px;">
-</tr>
-</thead>
-<tbody style="font-size: 11px; font-style: Arcon;">
-<tr><td></td>  
- <td style="font-size: 14px; font-style: Arcon; color: #ffffa9;">230</td>
-  <td style="font-size: 14px; font-style: Arcon; color: #ffffa9;">12</td>
-   <td style="font-size: 14px; font-style: Arcon; color: #ffffa9; ">4</td>
+	<img id="FotoPodio1" src="immagini/foto/Foto3.jpg" class="FotoPodio"  />
 
-<td></td>
-</tr>
-</tbody>
-</table>
+	<p id="NomeArciere1" class="NomeArciere" >Mario Rossi</p>
+
+	<table>
+		<thead class="HPunteggi">
+			<tr>
+				<td></td><td>Punti</td><td>Spot</td><td>Super</td><td>
+			</tr>
+		</thead>
+		<tbody  class="BPunteggi">
+		<tr	>
+			<td></td>  
+			<td id="PodioPunti1">230</td>
+			<td id="PodioSpot1">12</td>
+			<td id="PodioSuper1">4</td>
+			<td></td>
+		</tr>
+		</tbody>
+	</table>
 </div>
-<div id="divPodio3" class='divPodio' >
-<img src="immagini/foto/Foto3.jpg" width="180" height="245" 
-style="padding-left: 10px; padding-top: 10px;" />
-<p style="font-size: 14px; font-family: Gotham-Medium; color: #ffffa9; text-align: center; padding-top: 4px; padding-bottom: 4px;">Mario Rossi</p>
-<table>
-<thead style="font-size: 9px; font-family: bonvenocflight; color: #ffffa9;">
-<tr>
-<td style="width: 8px;"></td><td>Punti</td><td>Super</td><td>Spot</td><td style="width: 8px;">
-</tr>
-</thead>
-<tbody style="font-size: 11px; font-style: Arcon;">
-<tr><td></td>  
- <td style="font-size: 14px; font-style: Arcon; color: #ffffa9;">230</td>
-  <td style="font-size: 14px; font-style: Arcon; color: #ffffa9;">12</td>
-   <td style="font-size: 14px; font-style: Arcon; color: #ffffa9; ">4</td>
 
-<td></td>
-</tr>
-</tbody>
-</table>
+<div id="divPodio3" class='divPodio'>
+	<img id="FotoPodio3" src="immagini/foto/Foto3.jpg" class="FotoPodio"  />
+
+	<p id="NomeArciere3" class="NomeArciere" >Mario Rossi</p>
+
+	<table>
+		<thead class="HPunteggi">
+			<tr>
+				<td></td><td>Punti</td><td>Spot</td><td>Super</td><td>
+			</tr>
+		</thead>
+		<tbody  class="BPunteggi">
+		<tr	>
+			<td></td>  
+			<td id="PodioPunti3">230</td>
+			<td id="PodioSpot3">12</td>
+			<td id="PodioSuper3">4</td>
+			<td></td>
+		</tr>
+		</tbody>
+	</table>
 </div>
 </div>
 </body>

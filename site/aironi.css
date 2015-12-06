@@ -66,8 +66,8 @@ h2 {
 body {
 	
 		margin: 0 0 0 0;
-		background-image: url('immagini/sfondo_class.gif');
-	
+	/*	background-image: url('immagini/sfondo_class.gif');
+	*/
 }
 
 thead {
@@ -92,85 +92,112 @@ table {
 Specifiche per il podio
 */
 #podioBody {
-	/* background-image: null; */
-	 background-image: none;
-	/* background-image: url('immagini/sfondo_bosco_800x600.jpg');	*/
-	/* background-image: url('immagini/sfondo-tronco-sezione-800x600.png'); */
-	background-color: #000;
+	background-image: url("immagini/AironeInFiligranaNeg.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	
+	opacity: 1;
 	
 }
-
 #divMainPodio {
-	background-image: url("immagini/AironeInFiligranaNeg.png");
-	opacity: 1;
-	background-repeat: no-repeat;
 	width: 800px;
-	height: 600px;
-	border: 0px;
-	margin: 0px;
 }
 
-#divPodio1{
-	left: 295px; top: 50px;
-}
 
-#divPodio2{
-	left: 45px; top: 190px;
-}
 
-#divPodio3{
-	left: 540px; top: 230px;
-}
 
 .divPodio {
 	position:fixed; 
-	height: 325px; 
-	width: 200px; 
+	height: 350px; 
+	width: 215px; 
 	font-family: Arcon;
 	background-color: rgba(110, 141, 230, 0.5);
 	box-shadow: 5px 5px 10px 2px #BBB;
-	/*opacity: 0.6;
+	
+}
+
+.BarraVerticalePodio {
+	position: fixed; 
+    transform: rotate(-90deg);
+    transform-origin: 0% 0%;
+    text-shadow: -5px 5px 3px #BBBBBB;
+	height: 30px; 
+	width: 350px; 
+	color: rgb(110, 141, 230);
+	text-align: center;
+	font-size: 22px; 
+	font-family: bonvenocflight;
+	/*background-color: yellow;
 	*/
 }
-
-/**
-***
-***		Podio OLD - Inizio
-***		Eliminare DOPO il rilascio del podio nuovo
-***/
-
-.classe, .categoria {
-	font-family: Gotham-Bold;
-	font-size: 20px;
-	font-style: normal;
-	color: #000000;
-	}
-.punti, .spot, .anagrafica {
-
-	font-family: Gotham-Bold;
-	font-size: 13px;
-	font-style: normal;
-	color: #000000;
-	position: absolute;
-	width: 133px;
-	height: 20px;
-	z-index: 3
+#divPodio1{
+	left: 310px; top: 60px;
 }
 
-#punti1 {left:374px; top:386px; }
-#spot1 {left:374px; top:415px; }
-#punti2  {left: 157px; top: 445px;}
-#spot2  {left: 157px; top: 472px; }
-#punti3 {left:583px; top:457px; }
-#spot3 {left:583px; top:485px; }
+#divPodio2{
+	left: 45px; top: 165px;
+}
 
+#divPodio3{
+	left: 565px; top: 230px;
+}
 
-/**
-***		Podio OLD - Fine
-***		Eliinare fino qui
-***/
+#BarraVerticalePodio1 {
+	left: 280px; top: 410px;
+}
 
+#BarraVerticalePodio2 {
+	left: 15px; top: 515px;
+}
 
+#BarraVerticalePodio3 {
+	left: 535px; top: 580px;
+	
+}
+
+.FotoPodio {
+	width: 195px;
+	height: 275px;
+	padding-left: 10px; 
+	padding-top: 10px;
+	
+}
+
+.NomeArciere {
+	font-size: 14px;
+	font-family: Gotham-Medium;
+	color: #fff042;
+	text-align: center;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.HPunteggi {
+	font-size: 9px; font-family: bonvenocflight; color: #fff042;
+}
+
+.BPunteggi {
+	font-size: 14px; font-family: Arcon; color: #fff042;
+}
+
+.DescClasseCategoria {
+	font-size: 28px; font-family: Arcon; 
+	background-color: #fff042;
+	color: rgb(110, 141, 230);
+	box-shadow: 5px 5px 10px 2px #BBB;
+	padding: 4px;
+	margin: 10px 10px;
+}
+#DescClasse {
+	float: left;
+	text-align: right;
+}	
+
+#DescCategoria {
+	float: right;
+	text-align: left;
+}	
+	
 /*
 Inizio griglia impaginazione consolle
 

@@ -202,7 +202,7 @@ if( strcasecmp($apiMethod,'categorie') == 0){
 }
 
 
-// Method c: classi
+// Method d: classi
 if( strcasecmp($apiMethod,'classi') == 0){
 
 	if (isset($_GET['cla'])) {
@@ -216,6 +216,30 @@ if( strcasecmp($apiMethod,'classi') == 0){
 	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
 	$response['data'] = getClassi($idClasse);
 }
+
+
+// Method e: un podio per classe / categoria
+if( strcasecmp($apiMethod,'podio') == 0){
+
+	if (isset($_GET['cla'])) {
+		$idClasse = $_GET['cla'];
+	}
+	else {
+		$idClasse =null;
+	}
+	
+	if (isset($_GET['cat'])) {
+		$idCategoria = $_GET['cat'];
+	}
+	else {
+		$idCategoria =null;
+	}
+	
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getPodio($idClasse, $idCategoria);
+}
+
 
 // --- Step 4: Deliver Response
 

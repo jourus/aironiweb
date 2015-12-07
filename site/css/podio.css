@@ -26,6 +26,8 @@ Specifiche per il podio
 	font-family: Arcon;
 	background-color: rgba(110, 141, 230, 0.5);
 	box-shadow: 5px 5px 10px 2px #BBB;
+	visibility: hidden;
+
 }
 
 .BarraVerticalePodio {
@@ -39,8 +41,8 @@ Specifiche per il podio
 	text-align: center;
 	font-size: 22px;
 	font-family: bonvenocflight;
-	/*background-color: yellow;
-	*/
+	visibility: hidden;
+
 }
 
 #divPodio1 {
@@ -103,6 +105,7 @@ Specifiche per il podio
 
 .DescClasseCategoria {
 	margin: 10px 10px;
+	visibility: hidden;
 }
 /*
 .DescClasseCategoria {

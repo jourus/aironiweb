@@ -11,7 +11,7 @@
 <body leftmargin="2" topmargin="0" marginwidth="0" marginheight="0" >
 
 <script type="text/javascript">
-alert(decodeClasse('CAM'));
+// alert(decodeClasse('CAM'));
 function decodeClasses(idClasse) {
 	// Questa funzione decodifica l'id classe e restituisce la relativa descrizione
 	var url=  'api/?method=classi&format=json&cla=' + idClasse;
@@ -94,7 +94,7 @@ if(false !== $response) {
 } // otherwise something went wrong
 
 echo "Ci sono " . count($gists["data"]) . " elementi. <br>";
-
+/*
 foreach ($gists["data"] as &$Arcieri) {
 	// echo "ciao $value<br>"; //$value . "<br>";
 //echo is_array($value);
@@ -106,11 +106,82 @@ foreach ($gists["data"] as &$Arcieri) {
 	//json_decode($json)
 }
 echo min($gists);
-
+*/
 //echo sizeof($gists[1]);
 ?>
+	<table id="ciccio" style = "border: 1px; border-style: dashed; border-color: red; visibility: hidden;">
+		<tbody>
+					<tr>
+				<td id='gff'>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+			<tr class="pari">
+				<td>2</td>
+				<td>2</td>
+				<td>2</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>3</td>
+				<td>3</td>
+				<td>3</td>
+			</tr>
+			<tr class="pari">
+				<td>4</td>
+				<td>4</td>
+				<td>4</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>5</td>
+				<td>5</td>
+				<td>5</td>
+			</tr>
+		</tbody>
+	</table>
+
+<script type="text/javascript">
+$('#ciccio').css('background-color', 'red');
+$('#ciccio').hide();
+$('#ciccio').css('visibility', 'visible');
+$('#ciccio').fadeIn(1000, function(){
+
+	$('#ciccio tr.pari').css('background-color', 'orange');
+
+	$('#ciccio').fadeOut(500, function(){
+		$('#ciccio').fadeIn(500, function(){
+			$('#ciccio tr.pari').remove();
+			
+		});	
+		
+	});
+		
+});
 
 
-  
+
+// var setConsegna = function(piazzola) {
+// 	var url = 'api/?method=score&format=json&piazzola=' + piazzola;
+// 	$.getJSON(url, function(data) {
+// 		var myCss = '';
+// 		if (data.data.numcons) {
+// 			myCss = 'aa';
+// 		} else {
+// 			myCss = 'b';
+// 		}
+
+// 		$('#fldCons' + piazzola).addClass(myCss);
+// 	});
+// }
+
+// consegnato.setConsegna();
+// document.write('ciao -->' + consegnato.valore);
+
+
+</script>
 </body>
 </html>

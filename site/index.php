@@ -66,7 +66,7 @@
 		 			
 		 			
 		 $Podio = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('podio.html?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
-		 $Classifica = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('classifica.php?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
+		 $Classifica = "<div align=\"right\"><a href=\"#\" onClick=\"MM_openBrWindow('classifica.html?classe=" . $classe . "&categoria=" . $categoria . "','onda','menubar=no,width=800,height=600')\"><img src=\"immagini/". $imgvideo . "\" width=\"14\" height=\"14\" border=\"0\"></a></div>";
 		 	
 		 echo tableRow(" class=\"" . $formatClasseRiga . "\"", array($Podio, $classe, $categoria, $Classifica));
 		

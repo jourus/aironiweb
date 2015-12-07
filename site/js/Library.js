@@ -2,6 +2,19 @@
  * 
  */
 
+
+// Mette in maiuscolo il primo carattere di ciascuna parola.
+// Es. 'MARIO rossi' diventa 'Mario Rossi'
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+
+
+
+
 function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -48,7 +61,7 @@ function SetClasse(objectName, classe) {
  
 }
 
-function formatDate(giorno) {
+function FormatDate(giorno) {
 	try {
 		var oggi = new Date(giorno);
 		
@@ -66,12 +79,65 @@ function formatDate(giorno) {
 	}
 }
 
+
+
+function PiazzoleConsegnate(oggetto) {
+	
+
+	var setConsegna = function(piazzola) {
+		var url = 'api/?method=score&format=json&piazzola=' + piazzola;
+		$.getJSON(url, function(data) {
+			var myCss = '';
+			if (data.data.numcons) {
+				myCss = 'piazzscoreconsyes';
+			} else {
+				myCss = 'piazzscoreconsno';
+			}
+
+			$('#fldConsegna' + piazzola).addClass(myCss);
+		});
+	}
+	
+	
+	var url = 'api/?method=infogara&format=json';
+	$.getJSON(url, function(data) {
+
+		
+		if (data.status == 200) {
+			// Eliminazione righe precedenti
+			$(oggetto + ' tr').remove();
+			
+			var piazzole = data.data.piazzole;
+			var piazzolePerRiga = piazzole / 2;
+			var riga = '<tr>';
+
+			for (x = 1; x <= piazzole; x++) {
+				riga += "<td id='fldConsegna" + x + "'>" + x + "</td>";
+
+				if (x == piazzolePerRiga || x == piazzole) {
+					riga += '</tr>';
+					$(oggetto).append(riga);
+					riga = '<tr>';
+				}
+
+			}
+			
+			
+			for (x = 1; x <= piazzole; x++) {
+				setConsegna(x);
+			}
+		}
+
+	});
+
+}
+
 function SetInfogara(objectName) {
 	var url=  'api/?method=infogara&format=json';
 	$.getJSON(url, function(data) {
 		
 		if (data.status ==200){
-			$(objectName).text(data.data.localita + ' (' + data.data.provincia + '), ' + formatDate(data.data.data));
+			$(objectName).text(data.data.localita + ' (' + data.data.provincia + '), ' + FormatDate(data.data.data));
 	
 		}
 		
@@ -89,8 +155,7 @@ function SetPodio(classe, categoria)  {
 		
 		
 		$.each(data.data, function(key, val) {
-		//if (data.data.length > 0){
-			//$('#NomeArciere3').text(data.data[0].arciere);
+
 				
 			$('#NomeArciere' + conta).text(val.arciere);
 			$('#PodioPunti' + conta).text(val.punti);
@@ -105,3 +170,49 @@ function SetPodio(classe, categoria)  {
 	});
  
 }
+
+
+
+function SetClassifica(classe, categoria) {
+	// Servizio Web che eroga il dato
+	// var url=  'http://localhost/airo/piazzoleservice.php?min=' + piazzola + '&max=' + piazzola;
+	var url=  'api/?method=classifica&format=json&cla=' + classe + '&cat=' + categoria;
+	//var elemento = '#' + tabella;
+
+
+        // eliminazione di tutte le righe presenti
+		$('.rigaClassifica').remove();
+
+        // Contatore di posizione in classifica
+        var posizione = 0;
+
+        var tabella = "#tabSinistra";
+        
+        $.getJSON(url, function(data) {
+                
+                $.each(data.data, function(key, val) {
+                         
+                        var riga = "<tr class='rigaClassifica'>";
+                        posizione++;
+                        riga += "<td class='fields fieldPOS'>" + posizione + "</td>";
+                        riga += "<td class='fields fieldNome'>" + toTitleCase(val.arciere) + "</td>";
+                        riga += "<td class='fields fieldPunti'>" + val.punti + "</td>";
+                        riga += "<td class='fields fieldSpot'>" + val.spot + "</td>";
+                        riga += "<td class='fields fieldSuper'>" + val.superspot + "</td>";
+                        
+                        riga += "</tr>";
+                        
+                        // le prime 23 righe vanno nella tabella di sinistra, dalla 24 in poi vanno a destra.
+                        if (posizione == 24) {tabella = "#tabDestra"}
+                        
+                        $(tabella).append(riga);
+                        
+                        
+                        });
+
+	
+		});
+	
+		
+}
+    

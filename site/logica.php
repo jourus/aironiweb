@@ -123,7 +123,7 @@ function cambiapodio(){
 		if (vartiposchermata == 0)
 		{//schermata del podio classico
 
-			//contollare il tipo di categoria pere decidere il podio
+			//contollare il tipo di categoria per decidere il podio
 				
 			urlpodio='podio.html?classe='+classe+'&categoria='+categoria;
 
@@ -135,7 +135,7 @@ function cambiapodio(){
 		{
 			if (vartiposchermata == 1) {//schermata classifica
 
-				urlpodio='classifica.php?classe='+classe+'&categoria='+categoria;
+				urlpodio='classifica.html?classe='+classe+'&categoria='+categoria;
 
 
 				parent.contpodio.location.replace(urlpodio);

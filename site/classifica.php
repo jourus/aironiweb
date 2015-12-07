@@ -91,16 +91,17 @@ MM_reloadPage(true);
 
 <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=12)">
 <!--  <link href="stile.css" rel="stylesheet" type="text/css"> -->
-<link href="aironi.css" rel="stylesheet" type="text/css">
+<link href="css/aironi.css" rel="stylesheet" type="text/css">
+<link href="css/classifica.css" rel="stylesheet" type="text/css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 
  
 <body id="bodyClassifica">
-
-<h1>Classifica: <?php echo getClassi($classe) ?> - <?php echo getCategorie($categoria) ?>
-</h1>
-
+<div class="divTitolo">
+<p class="DescClasseCategoria">Classifica: <?php echo getClassi($classe) ?> - <?php echo getCategorie($categoria) ?>
+</p>
+</div>
 <div id="ClassificaSinistra" class="Classifica" >
 
 
@@ -122,14 +123,13 @@ MM_reloadPage(true);
 				
 				 
 				 for ($x=0;$x<$limite1;$x++){
-				 	echo "<tr>";
+				 	echo "<tr class='rigaClassifica'>";
 				 	$pos = $x + 1;
-				 	echo "<td class='fieldPOS'>$pos</td>";
-				 	echo "<td class='fieldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
-					//echo "<td>&nbsp;</td>";
-				 	echo "<td class='fieldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
-				 	echo "<td class='fieldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
-				 	echo "<td class='fieldSuper'>" . $TuttiGliArcieri[$x]->Super . "</td>";
+				 	echo "<td class='fields fieldPOS'>$pos</td>";
+				 	echo "<td class='fields fieldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+				 	echo "<td class='fields fieldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+				 	echo "<td class='fields fieldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
+				 	echo "<td class='fields fieldSuper'>" . $TuttiGliArcieri[$x]->Super . "</td>";
 				 	echo "</tr>";
 				 	
 				 }
@@ -162,15 +162,14 @@ MM_reloadPage(true);
 				}
 		  		
 	
-				for ($x= $MaxRigheArcieriInClassifica + 1;$x<$limite2;$x++){
+				for ($x= $MaxRigheArcieriInClassifica;$x<$limite2;$x++){
 				 	echo "<tr>";
 				 	$pos = $x + 1;
-				 	echo "<td class='fieldPOS'>$pos</td>";
-				 	echo "<td class='fieldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
-					//echo "<td>&nbsp;</td>";
-				 	echo "<td class='fieldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
-				 	echo "<td class='fieldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
-				 	echo "<td class='fieldSuper'>" . $TuttiGliArcieri[$x]->Super . "</td>";
+				 	echo "<td class='fields fieldPOS'>$pos</td>";
+				 	echo "<td class='fields fieldNome'>" . $TuttiGliArcieri[$x]->Iscritto . "</td>";
+				 	echo "<td class='fields fieldPunti'>" . $TuttiGliArcieri[$x]->Punti . "</td>";
+				 	echo "<td class='fields fieldSpot'>" . $TuttiGliArcieri[$x]->Spot . "</td>";
+				 	echo "<td class='fields fieldSuper'>" . $TuttiGliArcieri[$x]->Super . "</td>";
 				 	echo "</tr>";
 				}
 				

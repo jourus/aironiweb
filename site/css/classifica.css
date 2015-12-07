@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+
+/*
+Specifiche per la classifica
+Scores consegnati / da consegnare
+*/
+.DescClasseCategoria {
+	margin-left: 5px;
+	margin-bottom: 6px;
+	margin-top: 6px;
+	height: 34px;
+	float: right;
+	text-align: right;
+}
+
+.Classifica {
+	width: 384px;
+	height: 455px;
+	border: none;
+	margin-bottom: 10px;
+	font-family: Arcon;
+	background-color: rgba(110, 141, 230, 0.5);
+	box-shadow: 5px 5px 10px 2px #BBB;
+}
+
+.theadClassifica {
+	padding: 5px 5px 0px 5px;
+	color: #fff042;
+	font-family: Gotham-medium;
+}
+
+.headPOS {
+	text-align: center;
+	width: 25px;
+}
+
+.headPunti, .headSpot, .headSuper {
+	text-align: center;
+	width: 30px;
+}
+
+.fieldNome {
+	text-align: center;
+	width: auto;
+}
+
+.fields {
+	color: #3839e6;
+	font-family: Arcon;
+}
+
+.tConsegnascore {
+	clear: both;
+	width: 98%;
+	font-family: Arcon;
+	background-color: rgba(110, 141, 230, 0.5);
+	box-shadow: 5px 5px 10px 2px #BBB;
+	font-size: 11;
+	margin-left: 5px;
+}
+
+.consegnascores {
+	font-family: Arcon;
+	font-size: 12;
+	text-align: center;
+	padding-left: 2px;
+	padding-bottom: 2px;
+}
+
+.consegnascores.piazzscoreconsyes {
+	/* background-color: #7FFF00; */
+	color: #3839e6;
+}
+
+.consegnascores.piazzscoreconsno {
+	color: #F44;
+}
+
+body {
+	background-image: url("../immagini/AironeInFiligranaNeg.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	opacity: 1;
+	width: 800px;
+}
+
+#ClassificaSinistra {
+	float: left;
+	margin-left: 6px;
+}
+
+#ClassificaDestra {
+	margin-right: 12px;
+	float: right;
+}
+
+.divTitolo {
+	width: 98.5%;
+	/* background-color: orange; */
+	height: 55px;
+}

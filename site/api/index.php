@@ -241,6 +241,54 @@ if( strcasecmp($apiMethod,'podio') == 0){
 }
 
 
+// Method f: Informazioni sulla gara (Tipo, data, località ecc.)
+if( strcasecmp($apiMethod,'infogara') == 0){
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getInformazioniGara();
+}
+
+
+// Method g: classifica per classe / categoria
+if( strcasecmp($apiMethod,'classifica') == 0){
+
+	if (isset($_GET['cla'])) {
+		$idClasse = $_GET['cla'];
+	}
+	else {
+		$idClasse =null;
+	}
+
+	if (isset($_GET['cat'])) {
+		$idCategoria = $_GET['cat'];
+	}
+	else {
+		$idCategoria =null;
+	}
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getClassifica($idClasse, $idCategoria);
+}
+
+// Method h: Verifica Score Consegnati
+if( strcasecmp($apiMethod,'score') == 0){
+
+	if (isset($_GET['piazzola'])) {
+		$piazzola = $_GET['piazzola'];
+		if (!is_numeric($piazzola))
+			$piazzola=0;
+	}
+	else
+		$piazzola = 0;
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getScoreConsegnato($piazzola);
+}
+
+
+
 // --- Step 4: Deliver Response
 
 // Return Response to browser

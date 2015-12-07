@@ -17,6 +17,9 @@ function getPiazzole($piazzolaDa, $piazzolaA) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
+	
 	// preparazione dello statement SQL
 	$stmt = $conn->prepare(AIRO_SQL_GET_PIAZZOLE);
 	
@@ -50,6 +53,9 @@ function getCategorie($idCategoria) {
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
+	
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
 	
 	// preparazione dello statement SQL
 	// se il parametro è null, viene scelto uno statement SQL senza criteri di filtro.
@@ -89,7 +95,10 @@ function getClassi($idClasse) {
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-
+	
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
+	
 	// preparazione dello statement SQL
 	// se il parametro è null, viene scelto uno statement SQL senza criteri di filtro.
 	if (is_null($idClasse)) {
@@ -127,7 +136,10 @@ function getPodio($idClasse, $idCategoria) {
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-
+	
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
+	
 	$stmt = $conn->prepare(AIRO_SQL_GET_PODIO);
 	$stmt->bind_param("ss", $idClasse, $idCategoria);
 
@@ -149,5 +161,101 @@ function getPodio($idClasse, $idCategoria) {
 
 }
 
+
+
+function getClassifica($idClasse, $idCategoria) {
+
+	// Create connection
+	$conn = new mysqli( AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
+
+	$stmt = $conn->prepare(AIRO_SQL_GET_CLASSIFICA);
+	$stmt->bind_param("ss", $idClasse, $idCategoria);
+
+
+	$stmt->execute();
+
+	$result=$stmt->get_result();
+
+	// serializzazione dei dati in un array
+	$rows = array();
+	while($row = $result->fetch_assoc()) {
+		$rows[] = $row;
+	}
+	$conn->close();
+
+	// invio output a client
+	return $rows;
+	// flush();
+
+}
+
+function getInformazioniGara() {
+
+	// Create connection
+	$conn = new mysqli( AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
+	
+	// preparazione dello statement SQL
+	$stmt = $conn->prepare(AIRO_SQL_GET_INFORMAZIONI);
+
+	$stmt->execute();
+
+	$result=$stmt->get_result();
+	
+	$conn->close();
+	
+	if($row = $result->fetch_assoc()) {
+		return $row;
+	}
+	else
+		return null;
+
+}
+
+function getScoreConsegnato($piazzola) {
+
+	// Create connection
+	$conn = new mysqli( AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	// Importante! Errori con gli apostrofi!
+	$conn->set_charset("utf8");
+
+	// preparazione dello statement SQL
+	$stmt = $conn->prepare(AIRO_SQL_GET_SCORE_CONSEGNATI);
+	
+	$stmt->bind_param("i", $piazzola);
+		
+	$stmt->execute();
+	
+	$result=$stmt->get_result();
+
+	$conn->close();
+	
+	if($row = $result->fetch_assoc()) {
+		return $row;
+	}
+	else 
+		return null;
+
+
+
+}
 
 ?>

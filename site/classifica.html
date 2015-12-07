@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>classifica</title>
+<script language="JavaScript" type="text/JavaScript">
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+</script>
+
+<META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=12)">
+<!--  <link href="stile.css" rel="stylesheet" type="text/css"> -->
+<link href="css/aironi.css" rel="stylesheet" type="text/css">
+<link href="css/classifica.css" rel="stylesheet" type="text/css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body>
+
+<div class="divTitolo">
+<p class="DescClasseCategoria">Classifica: 
+</p>
+</div>
+<div id="ClassificaSinistra" class="Classifica" >
+
+
+  
+    <table class='theadClassifica'>
+        <thead>
+            <tr> 
+                <td class='headPOS'>POS</td>
+                <td class='headNome'>Nome</td>
+                <td class='headPunti'>Punti</td>
+                <td class='headSpot'>Spot</td>
+                <td class='headSuper'>Super</td>
+            </tr>
+        </thead>
+    
+        <tbody class="posclassifica">
+            <tr>
+                <td class='fields fieldPOS'></td>
+                <td class='fields fieldNome'></td>
+                <td class='fields fieldPunti'></td>
+                <td class='fields fieldSpot'></td>
+                <td class='fields fieldSuper'></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="ClassificaDestra" class="Classifica">
+    
+    <table class='theadClassifica'>
+        <thead>
+           <tr> 
+               <td class='headPOS'>POS</td>
+               <td class='headNome'>Nome</td>
+               <td class='headPunti'>Punti</td>
+               <td class='headSpot'>Spot</td>
+               <td class='headSuper'>Super</td>
+           </tr>
+        </thead>
+    
+       <tbody class="posclassifica">
+           <tr>
+               <td class='fields fieldPOS'></td>
+               <td class='fields fieldNome'></td>
+               <td class='fields fieldPunti'></td>
+               <td class='fields fieldSpot'></td>
+               <td class='fields fieldSuper'></td>
+           </tr>
+       </tbody>
+    </table>
+                            
+</div>
+
+
+<div class="tConsegnascore">
+  <h2>
+        Situazione Consegna Scores
+  </h2>
+
+    <table  width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          
+         
+          <td class='consegnascores piazzscoreconsyes'>1</td><td class='consegnascores piazzscoreconsyes'>2</td><td class='consegnascores piazzscoreconsyes'>3</td><td class='consegnascores piazzscoreconsyes'>4</td><td class='consegnascores piazzscoreconsyes'>5</td><td class='consegnascores piazzscoreconsyes'>6</td><td class='consegnascores piazzscoreconsyes'>7</td><td class='consegnascores piazzscoreconsyes'>8</td><td class='consegnascores piazzscoreconsyes'>9</td><td class='consegnascores piazzscoreconsyes'>10</td><td class='consegnascores piazzscoreconsyes'>11</td><td class='consegnascores piazzscoreconsyes'>12</td></tr><tr><td class='consegnascores piazzscoreconsyes'>13</td><td class='consegnascores piazzscoreconsyes'>14</td><td class='consegnascores piazzscoreconsyes'>15</td><td class='consegnascores piazzscoreconsyes'>16</td><td class='consegnascores piazzscoreconsyes'>17</td><td class='consegnascores piazzscoreconsyes'>18</td><td class='consegnascores piazzscoreconsyes'>19</td><td class='consegnascores piazzscoreconsyes'>20</td><td class='consegnascores piazzscoreconsyes'>21</td><td class='consegnascores piazzscoreconsyes'>22</td><td class='consegnascores piazzscoreconsyes'>23</td><td class='consegnascores piazzscoreconsyes'>24</td>          
+        
+          
+          
+          
+        </tr>
+      </table>
+	 
+
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%" class="consegnascores piazzscoreconsyes">Piazzola che ha  CONSEGNATO</td>
+        <td class="consegnascores piazzscoreconsno">Piazzola che NON ha CONSEGNATO</td>
+      </tr>
+    </table>
+  </div>
+<script language="javascript">
+    
+    function setPiazzola(classe, categoria, tabella, div) {
+	// Servizio Web che eroga il dato
+	// var url=  'http://localhost/airo/piazzoleservice.php?min=' + piazzola + '&max=' + piazzola;
+	var url=  'api/?method=classifica&format=json&cla=' + classe + '&cat=' + categoria;
+	var elemento = '#' + tabella;
+
+
+                // eliminazione di tutte le righe presenti
+		$('.Classifica tbody tr').remove(); 
+		
+		$.getJSON(url, function(data) {
+			$.each(data.data, function(key, val) {
+				// $(elemento).append('<tr><td>' + val.Posizione + '</td><td>' + val.Cognome + '</td><td>' + val.Nome + '</td></tr>');
+				$(elemento).append('<tr><td>' + toTitleCase(val.Nome) + ' ' + toTitleCase(val.Cognome) + '</td></tr>');
+				 
+				});
+
+		$('#titolo' + tabella).text('Piazzola ' + piazzola);
+					
+		
+		$('#' + div).fadeIn(2000);	
+		});
+	
+
+}
+
+
+</script>
+</body>
+</html>

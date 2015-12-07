@@ -1,0 +1,179 @@
+@CHARSET "UTF-8";
+
+@font-face {
+    font-family: Gotham-Light;
+    src: url("../fonts/Gotham-Light.otf");
+    
+}
+
+@font-face {
+    font-family: Gotham-Medium;
+    src: url("../fonts/Gotham-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Gotham-Bold;
+    src: url("../fonts/Gotham-Bold.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'bonvenocflight';
+    src: url('../fonts/bonvenocf/BonvenoCF-Light-webfont.eot');
+    src: url('../fonts/bonvenocf/BonvenoCF-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bonvenocf/BonvenoCF-Light-webfont.woff') format('woff'),
+         url('../fonts/bonvenocf/BonvenoCF-Light-webfont.ttf') format('truetype'),
+         url('../fonts/bonvenocf/BonvenoCF-Light-webfont.svg#bonvenocflight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: Arcon;
+    src: url("../fonts/Arcon-Regular.otf");
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+h1 {
+	text-align: center;
+	font-family: Arcon;
+  	font-size: 20px;
+  	padding-top: 8px;
+  	padding-bottom: 8px;
+
+}
+
+
+.DescClasseCategoria {
+	font-size: 28px;
+	font-family: Arcon;
+	background-color: #fff042;
+	color: #6e8de6;
+	box-shadow: 5px 5px 10px 2px #BBB;
+	padding: 4px;
+	width: auto;
+	
+}
+
+h2 {
+	text-align: center;
+	font-family: Arcon;
+  	font-size: 14px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color:#fff042;
+	color: #6e8de6;
+	
+	}
+
+body {
+	
+		margin: 0 0 0 0;
+	
+}
+
+thead {
+	text-align: center;
+	font-family: Gotham-Medium;
+  	font-size: 13px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	
+}
+
+table {
+	font-size: 13px;
+	font-family: Gotham-Light;
+	text-align: center;
+	width: 100%;
+}
+
+
+
+
+	
+/*
+Inizio griglia impaginazione consolle
+
+*/
+	
+div#speciali {
+	padding: 10px;
+	width: 200px;
+	position: absolute;
+	top: 0;
+	left: 600
+	
+	
+}
+
+div#comandimanuali{
+	width: 550px;
+	float: left;
+	background-color: white;
+	
+}
+
+.righe 
+{
+	background-color: #FFFFFF;
+	cellpadding=3px; 
+	cellspacing=1px;
+}
+
+.righealt 
+{
+	background-color: #FFFF9E;
+	cellpadding=3px; 		
+	cellspacing=1px;
+		
+}
+
+.interlinea
+{
+	background-image: url("../immagini/linea.jpg");
+	background-size: 100px 4px;
+    background-repeat: no-repeat;
+	
+}
+.interlinea-vuota
+{
+	background-color: #FFFFFF;
+	background-size: 100px 4px;
+    background-repeat: no-repeat;	
+    background-clip: content-box;
+}
+.interlinea-back
+{
+	background-image: url("../immagini/linead.jpg");
+	height: 4px;
+	
+}
+
+/*
+
+*/
+
+
+/*
+	Inizio Classifica per Compagnia
+*/
+
+
+.classificaPerCompagnia {
+	float: left; 
+	width: 48%; 
+	border: 4px; 
+	margin: 3px;
+	font-family: fantasy;
+}

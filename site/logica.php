@@ -125,7 +125,7 @@ function cambiapodio(){
 
 			//contollare il tipo di categoria pere decidere il podio
 				
-			urlpodio='podio.php?classe='+classe+'&categoria='+categoria;
+			urlpodio='podio.html?classe='+classe+'&categoria='+categoria;
 
 			//alert(urlpodio);
 			parent.contpodio.location.replace(urlpodio);

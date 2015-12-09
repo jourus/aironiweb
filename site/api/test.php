@@ -1,105 +1,99 @@
 <?php 
-include 'PiazzoleService.php';
-include_once 'query.php';
-include_once 'config.php';
-
-include 'Library.php';
+//require_once 'PiazzoleService.php';
 
 
+//echo json_decode(getLayoutFoto());
 
 
-
-echo "ciao";
- // getInformazioniGara();
-// Create connection
-$conn = new mysqli( AIRO_CONN_SERVERNAME, AIRO_CONN_USERNAME, AIRO_CONN_PASSWORD, AIRO_CONN_DBNAME);
-// Check connection
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
-
-// preparazione dello statement SQL
-$stmt = $conn->prepare(AIRO_SQL_GET_INFORMAZIONI);
-
-$stmt->execute();
-
-$result=$stmt->get_result();
-
-// serializzazione dei dati in un array
-$rows = array();
-while($row = $result->fetch_assoc()) {
-	$rows[] = $row;
-}
-$conn->close();
-
-//$z = $rows[0];
-
-
-$f = getInformazioniGara();
-$z = $f[0];
-echo "<br> 2--> " . $z['provincia'] .  "<br> 2--> " . $z['tipo'] . "<br> 2--> " . utf8_decode( $z['localita']) . "<br> 2--> " . $z['data'] ." trovato!!";
-
-echo json_encode($z);
-echo json_last_error_msg();
-echo "<br>";
-echo unicode_decode("Arcieri dell\u2019Airone");
-echo unicode_decode("Qui non ho bisogno di nulla.");
-
-// flush();
 
 ?>
 
+<html>
 
-<script  type="text/javascript">
-function formatDate(giorno) {
-	try {
-		var oggi = new Date(giorno);
-		
-		var G = oggi.getDate();
-		var M = (oggi.getMonth());
-		var A = (oggi.getYear() + 1900);
-		
-		var mese = Array("gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "Dicembre")
-		
-		return(G + " " + mese[M] + " " + A);
-	}
-	catch (errore)
-	{
-		return "";
-	}
+<head>
+<title>Pagina di esperimenti</title>
+<script src="../js/jquery.js"></script>
+<style type="text/css">
+
+.myItem{
+	border: 2px dashed red;
+	background-color: yellow;
+	position: relative;
 }
 
-document.write(formatDate(new Date()));
+</style>
+</head>
+<body>
+<p style="border: 2px solid red;">
+Ciao anche da qui
+</p>
+<div id="theDiv" style="width: 800px; height: 600px;border: 2px solid orange; "></div>
+<script type="text/javascript">
 
-document.write("<br>");
-document.write("10<br>");
 
-try {
-	if ("ciccio".getMonth()==NaN) {
-		document.write("Questo è Nan<br>");
-	} else {
-		document.write("Questo NON è Nan<br>");
-	}
+
+function getElencoFoto() {
+
+	var myUrl = '../api/?method=elencofoto&format=json';
+	var esito=[];
+	$.ajax({
+			dataType: 'json',
+			url: myUrl, 
+			async: false, 
+			success: function(data) {
+					esito = data.data;				
+				}
+	});
+	return esito;
+	
 }
-catch (error){
-	document.write("Si è rotto!<br>");
-}
-
-document.write("20<br>");
-
-document.write("<br>------------------------------------------------------<br>");
-document.write("1. Ciao " + formatDate('osti!') + " ;<br>");
-document.write("2. 'Sera " + formatDate('2016-7-12') + ";<br>");
-document.write("<br>------------------------------------------------------<br>");
-document.write("20<br>");
 
 
+	// http://localhost/airo/api/?method=elencofoto&format=json
+	// http://localhost/airo/api/?method=layoutfoto&format=json
+	var urlOpzioni=  '../api/?method=layoutfoto&format=json';
+	
+	var conta = 1;
+	$.getJSON(urlOpzioni, function(data) {
+		
+		var opzioni = data.data.layout.length;
+		var scelto = Math.floor((Math.random() * opzioni));
+
+		var Posizioni = data.data.layout[scelto].foto;
+
+		var ElencoFoto = getElencoFoto();
+		if (ElencoFoto.length == 0) {
+			return ;
+			}
+		
+		while (ElencoFoto.length < Posizioni.length){
+
+				ElencoFoto.concat(getElencoFoto());
+			}
+		
+		
+		$.each(Posizioni, function(key, layout) {
+
+			// Qui bisogna avere le immagini
+//			console.log(layout.top);
+
+			$("#theDiv").append("<div class='myItem' style='top: " + layout.top +"; left: " + layout.left + "; width: " + layout.width + "; height: " + layout.height + "; visibility: hidden;'></div>");
+;
+		});
+		$(".myItem").hide();
+		$(".myItem").css('visibility', 'visible');
+		
+		$(".myItem").fadeIn(3000)		
+	});
+
+
+
+	
+
+
+
+	
 
 </script>
-
-
-<?php 
-echo ("<br>------------------------------------------------------<br>");
-echo json_encode( getScoreConsegnato(1));
-
-?>
+</body>
+</html>

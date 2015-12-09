@@ -10,4 +10,8 @@ define("AIRO_SQL_GET_PODIO", "select concat(Nome, ' ', Cognome) arciere, PUNTI a
 define("AIRO_SQL_GET_INFORMAZIONI", "SELECT tipo, localita, provincia, compagnia, data, piazzole FROM INFORMAZIONI LIMIT 1;");
 define("AIRO_SQL_GET_CLASSIFICA", "SELECT concat(NOME, ' ', COGNOME) AS arciere, PUNTI as punti, SPOT + SUPERSPOT as spot, SUPERSPOT as superspot  FROM ISCRITTI WHERE CLASSE= ? AND CATEGORIA = ? AND PUNTI IS NOT NULL ORDER BY PUNTI DESC, SPOT + SUPERSPOT DESC, SUPERSPOT DESC");
 define("AIRO_SQL_GET_SCORE_CONSEGNATI", "SELECT count(PUNTI) as numcons FROM ISCRITTI WHERE Piazzuola=?");
+// define("AIRO_SQL_GET_CLASSIFICA_COMPAGNIA", "SELECT concat(NOME, ' ', COGNOME) AS arciere, PUNTI as punti, SPOT + SUPERSPOT as spot, SUPERSPOT as superspot, b.descrizione as classe, c.descrizione as categoria  FROM ISCRITTI a inner join CLASSE b on a.CLASSE = b.id inner join CATEGORIA c on a.CATEGORIA = c.id WHERE COMP = ? AND PUNTI IS NOT NULL ORDER BY COGNOME,CLASSE,categoria,PUNTI DESC");
 
+define("AIRO_SQL_GET_CLASSIFICA_COMPAGNIA", "SELECT concat(NOME, ' ', COGNOME) AS arciere, PUNTI as punti, SPOT + SUPERSPOT as spot, SUPERSPOT as superspot, b.descrizione as classe, c.descrizione as categoria  FROM ISCRITTI a inner join CLASSE b on a.CLASSE = b.id inner join CATEGORIA c on a.CATEGORIA = c.id WHERE COMP = ? AND PUNTI IS NOT NULL ORDER BY b.descrizione, c.descrizione, PUNTI DESC, SPOT + SUPERSPOT DESC, SUPERSPOT DESC");
+
+define("AIRO_SQL_GET_LAYOUT_FOTO", "select configurazione from LAYOUT_AUTOFOTO where `attivo` != 0");

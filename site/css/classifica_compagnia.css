@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+/*
+Specifiche per la classifica
+Scores consegnati / da consegnare
+*/
+.DescClasseCategoria {
+	margin-left: 6px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	height: 33px;
+	float: right;
+	text-align: right;
+	visibility: hidden;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-right: 20px:
+	
+	
+}
+
+.Classifica {
+	width: 782px;
+	height: 485px;
+	border: none;
+	margin-bottom: 6px;
+        margin-left: 6px;
+	font-family: Arcon;
+	background-color: rgba(110, 141, 230, 0.5);
+	box-shadow: 5px 5px 10px 2px #BBB;
+	visibility: hidden;
+	clear: both;
+	
+}
+
+.infoGara {
+	clear: both;
+	position: absolute;
+	bottom: 20px;
+	left: 10px;
+	font-size: 28px;
+	font-family: Arcon;
+	color: #fff042;
+	text-shadow: -5px 5px 3px #BBBBBB;
+}
+
+.theadClassifica {
+	padding: 5px 5px 0px 5px;
+	color: #fff042;
+	font-family: Gotham-medium;
+}
+
+.headPOS {
+	text-align: center;
+	width: 45px;
+}
+
+.headPunti, .headSpot, .headSuper {
+	text-align: center;
+	width: 70px;
+}
+
+.headClasse, .headCategoria {
+	text-align: center;
+	width: 140px;
+}
+.fieldNome {
+	text-align: center;
+	width: auto;
+	font-size: 14px;
+}
+
+.fields {
+	color: #445ec6; /*#3839e6;*/
+	font-family: Arcon;
+}
+
+
+body {
+	background-image: url("../immagini/AironeInFiligranaNeg.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	opacity: 1;
+	width: 800px;
+}
+
+#ClassificaSinistra {
+	float: left;
+	margin-left: 6px;
+}
+
+#DescClasse {
+	float: left;
+	text-align: right;
+}
+
+#DescCategoria {
+	float: right;
+	text-align: left;
+	margin-right: 12px;
+}
+
+.divTitolo {
+	width: 98.5%;
+	/* background-color: orange; */
+	height: 55px;
+}

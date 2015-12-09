@@ -87,7 +87,7 @@ MM_reloadPage(true);
 </script>
 
 <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=12)">
-<link href="aironi.css" rel="stylesheet" type="text/css">
+<link href="css/aironi.css" rel="stylesheet" type="text/css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
 

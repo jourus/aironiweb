@@ -215,4 +215,43 @@ function SetClassifica(classe, categoria) {
 	
 		
 }
+
+function SetClassificaCompagnia(compagnia) {
+	// Servizio Web che eroga il dato
+	var url=  'api/?method=classificacomp&format=json&compagnia=' + compagnia;
+
+        // eliminazione di tutte le righe presenti
+		$('.rigaClassifica').remove();
+
+        // Contatore di posizione in classifica
+        var posizione = 0;
+
+        var tabella = "#tabClassifica";
+        
+        $.getJSON(url, function(data) {
+                
+                $.each(data.data, function(key, val) {
+                         
+                        var riga = "<tr class='rigaClassifica'>";
+                        posizione++;
+                        riga += "<td class='fields fieldPOS'>" + posizione + "</td>";
+                        riga += "<td class='fields fieldPOS'>" + val.classe + "</td>";
+                        riga += "<td class='fields fieldPOS'>" + val.categoria + "</td>";
+                        
+                        riga += "<td class='fields fieldNome'>" + toTitleCase(val.arciere) + "</td>";
+                        riga += "<td class='fields fieldPunti'>" + val.punti + "</td>";
+                        riga += "<td class='fields fieldSpot'>" + val.spot + "</td>";
+                        riga += "<td class='fields fieldSuper'>" + val.superspot + "</td>";
+                        
+                        riga += "</tr>";
+                        
+                        
+                        $(tabella).append(riga);
+                        
+                        
+                        });
+
+	
+		});
+}
     

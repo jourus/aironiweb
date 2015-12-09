@@ -287,6 +287,40 @@ if( strcasecmp($apiMethod,'score') == 0){
 	$response['data'] = getScoreConsegnato($piazzola);
 }
 
+// Method i: classifica per compagnia
+if( strcasecmp($apiMethod,'classificacomp') == 0){
+
+	if (isset($_GET['compagnia'])) {
+		$compagnia = $_GET['compagnia'];
+	}
+	else {
+		$compagnia =null;
+	}
+
+
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getClassificaCompagnia($compagnia);
+}
+
+// Method h: Layout Foto
+if( strcasecmp($apiMethod,'layoutfoto') == 0){
+
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getLayoutFoto();
+}
+
+// Method i: Elenco Foto per Autofoto
+if( strcasecmp($apiMethod,'elencofoto') == 0){
+
+
+	$response['code'] = 1;
+	$response['status'] = $api_response_code[ $response['code'] ]['HTTP Response'];
+	$response['data'] = getElencoFotoLibere();
+}
 
 
 // --- Step 4: Deliver Response

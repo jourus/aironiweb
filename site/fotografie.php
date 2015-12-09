@@ -25,19 +25,7 @@ include 'config.php';
 
   	}
 
-/* 
- * Debug 
- 
- echo "La Foto 1 è: $randomphoto1<br>";
- echo "La Foto 2 è: $randomphoto2<br>";
- echo "La Foto 3 è: $randomphoto3<br>"; 	
 
- for ($check = 0; $check < $numero_file; $check++) {
- 	$printfile = $arrfiles[$check];
- 	echo "File --> $printfile<br>";
- 	
- }
- */
  
 ?>
 
@@ -268,7 +256,7 @@ include 'config.php';
 	</script>
 	</head>
 	<!-- <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=2,Transition=23)"> -->
-	<body bgcolor="#FFFFFF" background="sfondo_class.gif" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_timelinePlay('linefoto1');ciclocontinuo();MM_preloadImages('<?php echo $randomphoto1 ?>');MM_preloadImages('<?php echo $randomphoto2 ?>');MM_preloadImages('<?php echo $randomphoto3 ?>');">
+	<body bgcolor="#FFFFFF" background="immagini/AironeInFiligranaNeg.png" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_timelinePlay('linefoto1');ciclocontinuo();MM_preloadImages('<?php echo $randomphoto1 ?>');MM_preloadImages('<?php echo $randomphoto2 ?>');MM_preloadImages('<?php echo $randomphoto3 ?>');">
 	<div id="contfoto2" style="position:absolute; width:320px; height:240px; z-index:3; left: 450; top: 10;">
 	<div id="foto2" style="position:absolute; width:300px; height:300px; z-index:1; left: 0; top: 1000px;"><img src="<?php echo $randomphoto1 ?>" width="320"></div>
 	</div>

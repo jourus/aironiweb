@@ -162,7 +162,7 @@ function cambiapodio(){
 						
 
 
-					urlpodio='classifica_compagnia.php?Compagnia='+compagnia;
+					urlpodio='classifica_compagnia.html?compagnia='+compagnia;
 					//alert(urlpodio);
 
 					parent.contpodio.location.replace(urlpodio);

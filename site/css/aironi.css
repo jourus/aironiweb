@@ -77,7 +77,7 @@ h2 {
 	}
 
 body {
-	
+	width: 800px;
 		margin: 0 0 0 0;
 	
 }
@@ -102,27 +102,31 @@ table {
 	
 }
 
-width="100%" 
-
 
 	
 /*
 Inizio griglia impaginazione consolle
 
 */
+table#comandispeciali {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	bordercolor: #999999;
 	
+}
+
 div#speciali {
+	text-align:left;
 	padding: 10px;
-	width: 200px;
-	position: absolute;
-	top: 0;
-	left: 600
+	width: 300px;
+	float: right;
 	
 	
 }
 
 div#comandimanuali{
-	width: 550px;
+	width: 350px;
 	float: left;
 	background-color: white;
 	

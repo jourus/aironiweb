@@ -147,7 +147,7 @@ function cambiapodio(){
 					
 					
 				if (vartiposchermata == 2) {//schermata foto
-					urlpodio='fotografie.php';
+					urlpodio='fotografie.html';
 					//alert(urlpodio);
 
 					parent.contpodio.location.replace(urlpodio);

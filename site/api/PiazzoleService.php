@@ -291,7 +291,8 @@ function getScoreConsegnato($piazzola) {
 
 }
 
-
+// Restituisce tutte le foto di gara non necessariamente legate ad un arciere
+// presenti nella loro specifica cartella 
 function getElencoFotoLibere() {
 	//return $arrfiles = scandir(AIRO_FOLDER_AUTOFOTO);
 	
@@ -305,16 +306,21 @@ function getElencoFotoLibere() {
 }
 
 
-
+// Restituisce tutte le foto aventi un determinato set di estensioni all'interno di una cartella.
+// Attenzione! Non supporta regular expression
+// 	$rootDir	->	Il percorso da analizzare
+// 	$allowext	->	Array di estensioni
+//	$allData	->	Array di file restituiti
 function scanDirectories($rootDir, $allowext, $allData=array()) {
 	$dirContent = scandir($rootDir);
 	foreach($dirContent as $key => $content) {
-		$path = $rootDir.'/'.$content;
+		$path = $rootDir . $content;
 		$ext = strtolower(substr($content, strrpos($content, '.') + 1));
 
 		if(in_array($ext, $allowext)) {
 			if(is_file($path) && is_readable($path)) {
-				$allData[] = $content;
+				// $allData[] = $content;
+				$allData[] = AIRO_FOLDER_AUTOFOTO_FULL. $content;
 			}elseif(is_dir($path) && is_readable($path)) {
 				// recursive callback to open new directory
 				$allData = scanDirectories($path, $allData);

@@ -3,37 +3,37 @@
 <html>
 <head>
 <title>Piazzole</title>
-<META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=1,Transition=10)">
+<META http-equiv="Page-exit"
+	CONTENT="RevealTrans(Duration=1,Transition=10)">
 <!-- <link href="stile.css" rel="stylesheet" type="text/css"> -->
 
 <link href="stilePiazzole.css" rel="stylesheet" type="text/css">
 <script src="js/jquery.js"></script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
 
 <body>
-<h1 id="titoloPiazzole">Piazzole</h1>
-<div id="bigContainer">
-<?php 
+	<h1 id="titoloPiazzole">Piazzole</h1>
+	<div id="bigContainer">
+<?php
 require 'config.php';
 
-for ($snipet = 1; $snipet <= 6; $snipet++) {
+for($snipet = 1; $snipet <= 6; $snipet ++) {
 	
 	echo "<div id='divtabpiazzola$snipet' class='divPiazzole'> <table id='tabpiazzola$snipet' class='tblPiazzole'>
 		<thead><tr><td><h2 id='titolotabpiazzola$snipet'>Piazzola $snipet</h2></td></tr></thead>
 		<tbody></tbody></table></div>";
 	
-	
-//	echo "<div id='divtabpiazzola$snipet' class='divPiazzole'> <table id='tabpiazzola$snipet' class='tblPiazzole'>
-//		<thead><tr><td colspan=3><label id='titolotabpiazzola$snipet'>Piazzola $snipet</label></td></tr></thead>
-//		<tbody></tbody></table></div>";
-	
+	// echo "<div id='divtabpiazzola$snipet' class='divPiazzole'> <table id='tabpiazzola$snipet' class='tblPiazzole'>
+	// <thead><tr><td colspan=3><label id='titolotabpiazzola$snipet'>Piazzola $snipet</label></td></tr></thead>
+	// <tbody></tbody></table></div>";
 }
 
 ?>
 </div>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 	sessionStorage.ContatorePiazzola = 0;
 	refreshPiazzole();
 	

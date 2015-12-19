@@ -106,7 +106,7 @@ function refreshFoto() {
 		$.each(Posizioni, function(key, layout) {
 
 			// Viene accodata la foto (non visualizzabile)
-			$("#theDiv").append("<img  id='image" + key + "' class='myItem'  src='" + FotoPronte[key] + "' style='display: none;'/>");
+			$("#theDiv").append("<img  id='image" + key + "' class='myItem'  src='" + FotoPronte[key] + "' />");
 
 			// la foto viene valorizzata con le proprietà del css del layout selezionato
 			var info = JSON.parse(JSON.stringify(layout));
@@ -116,7 +116,7 @@ function refreshFoto() {
 		});
 
 		/// ingresso con fading.
-		$(".myItem").fadeIn(2000)		
+		$(".myItem").fadeIn(1500)		
 	});
 
 
@@ -142,15 +142,15 @@ function controlloStatoFoto() {
 
 
 function transizioneFoto() {
-	$(".myItem").fadeOut(1500, function(){refreshFoto();});
+	$(".myItem").fadeOut(1000, function(){refreshFoto();});
 	// $(".myItem").fadeIn(2000);
 
 	
 }
 
 function body_onload() {
-	var accoda = setInterval(function() {transizioneFoto();}, 6000);
+	var accoda = setInterval(function() {transizioneFoto();}, 4000);
 	
-	var preload = setInterval(function(){controlloStatoFoto();}, 1000);
+	var preload = setInterval(function(){controlloStatoFoto();}, 500);
 }
 

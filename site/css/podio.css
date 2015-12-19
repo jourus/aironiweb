@@ -27,7 +27,6 @@ Specifiche per il podio
 	background-color: rgba(110, 141, 230, 0.5);
 	box-shadow: 5px 5px 10px 2px #BBB;
 	visibility: hidden;
-
 }
 
 .BarraVerticalePodio {
@@ -42,7 +41,6 @@ Specifiche per il podio
 	font-size: 22px;
 	font-family: bonvenocflight;
 	visibility: hidden;
-
 }
 
 #divPodio1 {
@@ -118,8 +116,6 @@ Specifiche per il podio
 	margin: 10px 10px;
 }
 */
-
-
 #DescClasse {
 	float: left;
 	text-align: right;
@@ -129,7 +125,6 @@ Specifiche per il podio
 	float: right;
 	text-align: left;
 }
-
 
 .infoGara {
 	clear: both;

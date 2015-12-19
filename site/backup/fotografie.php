@@ -1,40 +1,32 @@
 <?php
 include 'config.php';
 
+// response.expires=-1
 
-//response.expires=-1
+if (file_exists ( $pathfotogeneriche )) {
+	$arrfiles = scandir ( $pathfotogeneriche );
+	$numero_file = count ( $arrfiles );
+} else {
+	// $arrfiles = scandir($pathfotogeneriche);
+	$numero_file = 0;
+}
+if ($numero_file > 0) {
+	$offset = 2; // i primi due file della cartella sono . e ..
+	$randomphoto1 = $pathfotogeneriche . $arrfiles [mt_rand ( $offset, $numero_file - 1 )];
+	$randomphoto2 = $pathfotogeneriche . $arrfiles [mt_rand ( $offset, $numero_file - 1 )];
+	$randomphoto3 = $pathfotogeneriche . $arrfiles [mt_rand ( $offset, $numero_file - 1 )];
+} else {
+	$randomphoto1 = $randomphoto2 = $randomphoto3 = $pathfoto . $FotoPodioStandard;
+}
 
-  	if (file_exists($pathfotogeneriche)){	
-	  	$arrfiles = scandir($pathfotogeneriche);
-	  	$numero_file = count($arrfiles);
-  	}
-  	else {
-  		//$arrfiles = scandir($pathfotogeneriche);
-  		$numero_file = 0;
-  		
-  	}
-  	if($numero_file>0) {
-  		$offset = 2; //i primi due file della cartella sono . e ..
-	  	$randomphoto1 = $pathfotogeneriche . $arrfiles[mt_rand($offset, $numero_file - 1)];
-	  	$randomphoto2 = $pathfotogeneriche . $arrfiles[mt_rand($offset, $numero_file - 1)];
-	  	$randomphoto3 = $pathfotogeneriche . $arrfiles[mt_rand($offset, $numero_file - 1)];
-  	}
-  	else 
-  	{
-  		$randomphoto1 = $randomphoto2 = $randomphoto3 = $pathfoto . $FotoPodioStandard;
-
-  	}
-
-
- 
 ?>
 
 
-	<html>
-	<head>
-	<title>Foto</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-	<script>
+<html>
+<head>
+<title>Foto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script>
 
 
 	function cambiofoto(){
@@ -254,17 +246,31 @@ include 'config.php';
 	}
 	
 	</script>
-	</head>
-	<!-- <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=2,Transition=23)"> -->
-	<body bgcolor="#FFFFFF" background="immagini/AironeInFiligranaNeg.png" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_timelinePlay('linefoto1');ciclocontinuo();MM_preloadImages('<?php echo $randomphoto1 ?>');MM_preloadImages('<?php echo $randomphoto2 ?>');MM_preloadImages('<?php echo $randomphoto3 ?>');">
-	<div id="contfoto2" style="position:absolute; width:320px; height:240px; z-index:3; left: 450; top: 10;">
-	<div id="foto2" style="position:absolute; width:300px; height:300px; z-index:1; left: 0; top: 1000px;"><img src="<?php echo $randomphoto1 ?>" width="320"></div>
+</head>
+<!-- <META http-equiv="Page-exit" CONTENT="RevealTrans(Duration=2,Transition=23)"> -->
+<body bgcolor="#FFFFFF" background="immagini/AironeInFiligranaNeg.png"
+	leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"
+	onLoad="MM_timelinePlay('linefoto1');ciclocontinuo();MM_preloadImages('<?php echo $randomphoto1 ?>');MM_preloadImages('<?php echo $randomphoto2 ?>');MM_preloadImages('<?php echo $randomphoto3 ?>');">
+	<div id="contfoto2"
+		style="position: absolute; width: 320px; height: 240px; z-index: 3; left: 450; top: 10;">
+		<div id="foto2"
+			style="position: absolute; width: 300px; height: 300px; z-index: 1; left: 0; top: 1000px;">
+			<img src="<?php echo $randomphoto1 ?>" width="320">
+		</div>
 	</div>
-	<div id="contfotouno" style="position:absolute; width:320px; height:400px; z-index:4; left: 400; top: 250; overflow: hidden;">
-	<div id="fotomove1" style="position:absolute; width:300px; height:400px; z-index:4; left: -300px; top: 0;"><img src="<?php echo $randomphoto2 ?>" width="320"></div>
+	<div id="contfotouno"
+		style="position: absolute; width: 320px; height: 400px; z-index: 4; left: 400; top: 250; overflow: hidden;">
+		<div id="fotomove1"
+			style="position: absolute; width: 300px; height: 400px; z-index: 4; left: -300px; top: 0;">
+			<img src="<?php echo $randomphoto2 ?>" width="320">
+		</div>
 	</div>
-	<div id="fogrande" style="position:absolute; width:480px; height:360px; z-index:1">
-	<div id="conffotgrande" style="position:absolute; width:500px; height:400px; z-index:1; left: 0; top: -500px;"><img src="<?php echo $randomphoto3 ?>" width="480"></div>
+	<div id="fogrande"
+		style="position: absolute; width: 480px; height: 360px; z-index: 1">
+		<div id="conffotgrande"
+			style="position: absolute; width: 500px; height: 400px; z-index: 1; left: 0; top: -500px;">
+			<img src="<?php echo $randomphoto3 ?>" width="480">
+		</div>
 	</div>
-	</body>
-	</html>
+</body>
+</html>

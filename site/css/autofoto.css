@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 
-
 #podioBody {
 	background-image: url("../immagini/AironeInFiligranaNeg.png");
 	background-repeat: no-repeat;
@@ -8,19 +7,18 @@
 	opacity: 1;
 }
 
-
-.myItem{
+.myItem {
 	position: absolute;
-    box-shadow: 5px 5px 10px 2px #BBB;
-    
+	box-shadow: 5px 5px 10px 2px #BBB;
+	display: none;
 }
 
 #imgDefault {
 	width: 400px;
 	height: 520px;
-	left: calc((100% - 400px) / 2);
-	top: calc((100% - 520px) / 2);
+	left: calc(( 100% - 400px)/2);
+	top: calc(( 100% - 520px)/2);
 	visibility: visible;
-    box-shadow: 0px 0px 0px 0px;
+	box-shadow: 0px 0px 0px 0px;
+	display: inherit;
 }
-

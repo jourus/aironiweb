@@ -2,30 +2,55 @@
 
 <html>
 <head>
-    <title>Page Title</title>
+<title>Page Title</title>
 </head>
+<script src="js/jquery.js"></script>
 <style type="text/css">
-
-
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    
-    
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
-
-    
+#container1 {
+	height: 900px;
+	width: 100%;
+	background-color: #DFD;
+	
+}
+#mioframe {
+	height: 80%;
+	width: 80%;
+	left: 10%;
+	top: 10%;
+	position: fixed;
+	
+}
 </style>
 <body>
-<!-- <div style="position: absolute; left:0; top: 0; height: 600px; width: 800px; background-color: orange;"> -->
-<div style="position: absolute; left:0; top: 0; height: 100%; width: 100%; background-color: orange;">
-<img src="/Users/gianfranco/Pictures/Casa Via PAsolini 71/20140727_125438892_iOS.jpg" style="position: absolute; left: 20px; top: 40px; width: 35%; height: auto; background-color: #123456; z-index: 5;"></img>
-<img src="/Users/gianfranco/Pictures/Casa Via PAsolini 71/20140727_125438892_iOS.jpg" style="position: absolute; left: 70px; top: calc(40% + 10px); width: 50%; height: auto; background-color: #123456; z-index: 15;"></img>
-<img src="/Users/gianfranco/Pictures/Casa Via PAsolini 71/20140727_125438892_iOS.jpg" style="position: absolute; float: right; left: 45%; top: 3%; width: 50%; height: auto; background-color: #123456; z-index: 5;"></img>
 
-
-</div>
-
+	
+	<div id="container1">
+	
+	<iframe id="mioframe" src="http://www.w3schools.com" onload="myframe_onload();">
+	
+	</iframe>
+	
+	</div>
+	
+	<script type="text/javascript">
+	
+	$("#mioframe").fadeOut(3000, function() {
+		$("#mioframe").attr('src', "/airo/podio.html?classe=CAF&categoria=CO");
+		
+	});
+	function myframe_onload(){
+		$("#mioframe").fadeIn(2000);	
+		
+		
+	}
+	</script>
+	
+	
+	
 </body>
 </html>

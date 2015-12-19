@@ -114,7 +114,7 @@ $conn->close ();
 				<td width="200" class="vocimenu">Autogiro</td>
 				<td><div align="center">
 						<a href="#"
-							onClick="MM_openBrWindow('contenitore.htm','onda','menubar=yes,width=800,height=600')"><img
+							onClick="MM_openBrWindow('logica.html','onda','menubar=yes,width=800,height=600')"><img
 							src="immagini/computer.gif" width="14" height="14"></a>
 					</div></td>
 			</tr>

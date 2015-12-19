@@ -14,8 +14,6 @@ Scores consegnati / da consegnare
 	visibility: hidden;
 	padding-top: 2px;
 	padding-bottom: 2px;
-	
-	
 }
 
 .Classifica {
@@ -27,7 +25,6 @@ Scores consegnati / da consegnare
 	background-color: rgba(110, 141, 230, 0.5);
 	box-shadow: 5px 5px 10px 2px #BBB;
 	visibility: hidden;
-	
 }
 
 .theadClassifica {
@@ -66,7 +63,6 @@ Scores consegnati / da consegnare
 	font-size: 11;
 	margin-left: 5px;
 	visibility: hidden;
-	
 }
 
 .consegnascores {
@@ -103,6 +99,7 @@ body {
 	margin-right: 12px;
 	float: right;
 }
+
 #DescClasse {
 	float: left;
 	text-align: right;

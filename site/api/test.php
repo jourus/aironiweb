@@ -1,18 +1,15 @@
 <html>
-
 <head>
 <title>Pagina di esperimenti</title>
 <script src="../js/jquery.js"></script>
 <style type="text/css">
-
-
 * {
 	margin: 0px;
 	border: 0px;
 	padding: 0px;
-
 }
-.myItem{
+
+.myItem {
 	border: 2px dashed red;
 	background-color: yellow;
 	position: relative;
@@ -24,21 +21,61 @@
 	width: 400px;
 	height: 400px;
 	position: 30px 30px;
-	visibility: visible; 
+	visibility: visible;
 	background-color: white;
 	/* calc((100% - 400px) / 2) calc((100% - 400px) / 2); */
 }
-
 </style>
 </head>
 <body>
-<p style="border: 2px solid red;">
-Ciao anche da qui
+
+<p>
+<?php 
+include_once 'PiazzoleService.php';
+
+$pieces = getClassificaCompagnia('04ARCH');
+getPodio('CAM', 'SI');
+
+
+//echo json_encode($pieces);
+
+
+
+// return getGenericData(AIRO_SQL_GET_CLASSIFICA_COMPAGNIA, "s", array($compagnia));
+
+
+echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
+
+$variabile1 = [];
+$variabile1 []= "s";
+
+$parm = array("04ARCH");
+
+ array_unshift($variabile1, "prova");
+
+if(is_array($variabile1)){
+	echo "è un array<br/>";
+}
+else
+{
+	echo "boh!<br/>";
+}
+
+echo join("<br>", $variabile1);
+
+echo "<br/>--------------------<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
+	
+
+?>
+
 </p>
-<div id="theDiv" style="width: 800px; height: 600px;border: 2px solid orange; ">
-<img class='myItem' id="imgDefault" src='../immagini/Logo 04AIRO.png'></img>
-</div>
-<script type="text/javascript">
+
+	<p style="border: 2px solid red;">Ciao anche da qui</p>
+	<div id="theDiv"
+		style="width: 800px; height: 600px; border: 2px solid orange;">
+		<img class='myItem' id="imgDefault" src='../immagini/Logo 04AIRO.png'></img>
+	</div>
+	<script type="text/javascript">
 
 
 

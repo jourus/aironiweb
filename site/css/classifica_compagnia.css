@@ -15,8 +15,6 @@ Scores consegnati / da consegnare
 	padding-top: 2px;
 	padding-bottom: 2px;
 	margin-right: 20px:
-	
-	
 }
 
 .Classifica {
@@ -24,13 +22,12 @@ Scores consegnati / da consegnare
 	height: 485px;
 	border: none;
 	margin-bottom: 6px;
-        margin-left: 6px;
+	margin-left: 6px;
 	font-family: Arcon;
 	background-color: rgba(110, 141, 230, 0.5);
 	box-shadow: 5px 5px 10px 2px #BBB;
 	visibility: hidden;
 	clear: both;
-	
 }
 
 .infoGara {
@@ -64,6 +61,7 @@ Scores consegnati / da consegnare
 	text-align: center;
 	width: 140px;
 }
+
 .fieldNome {
 	text-align: center;
 	width: auto;
@@ -74,7 +72,6 @@ Scores consegnati / da consegnare
 	color: #445ec6; /*#3839e6;*/
 	font-family: Arcon;
 }
-
 
 body {
 	background-image: url("../immagini/AironeInFiligranaNeg.png");

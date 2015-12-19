@@ -1,51 +1,37 @@
-
-
 div#speciali {
 	background-color: orange;
 	padding: 10px;
 	float: left;
 	width: 24%;
-	
 }
 
-div#comandimanuali{
+div#comandimanuali {
 	width: 60%;
 	float: left;
 	background-color: white;
-	
 }
 
-
-DIV#benvenuti
-{
-
+DIV#benvenuti {
 	font-family: Calibri, Arial, Helvetica, sans-serif;
 	font-size: 36px;
 	font-style: italic;
 	font-weight: bold;
 	color: #FF0000;
-	padding-top:200px;
-	text-align:center;
-	text-align:center;
-	line-height:50px;
-
-	
+	padding-top: 200px;
+	text-align: center;
+	text-align: center;
+	line-height: 50px;
 }
 
-
-DIV#benvenuti2
-{
-
+DIV#benvenuti2 {
 	font-family: Calibri, Arial, Helvetica, sans-serif;
 	font-size: 38px;
 	font-style: italic;
 	font-weight: bold;
 	color: #FF0000;
-	padding-top:200px;
-	text-align:center;
-	line-height:50px;
-
-	
+	padding-top: 200px;
+	text-align: center;
+	line-height: 50px;
 }
 
 .categoria {
@@ -55,6 +41,7 @@ DIV#benvenuti2
 	font-weight: bold;
 	color: #FF0000;
 }
+
 .classe {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 28px;
@@ -62,29 +49,30 @@ DIV#benvenuti2
 	font-weight: bold;
 	color: #990000;
 }
-.punti {
 
+.punti {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: bold;
 	color: #000000;
 }
+
 .spot {
-
-
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: bold;
 	color: #000000;
 }
+
 .intestazioni {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
 	color: #0000CC;
 }
+
 .titolopagina {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -92,11 +80,13 @@ DIV#benvenuti2
 	color: #990000;
 	text-decoration: underline;
 }
+
 .vocimenu {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 9px;
 	font-weight: normal;
 }
+
 .anagrafica {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -111,24 +101,26 @@ DIV#benvenuti2
 	border-bottom: 1px dotted Gray;
 }
 
-
 .posclassifica {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	color: Blue;
 }
+
 .classicatindex {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-weight: normal;
 }
+
 .posclassifica2 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	font-weight: bold;
 	color: Red;
 }
+
 .tabellapodio2 {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -136,12 +128,14 @@ DIV#benvenuti2
 	border-bottom: 1px dotted Gray;
 	color: Red;
 }
+
 .tabellapodioGrande {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-weight: bold;
 	background-color: #CCCCFF;
 }
+
 .PloticusTitle {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -149,16 +143,15 @@ DIV#benvenuti2
 	color: #FF0000;
 }
 
-.POSIZIONEclassifica
- {
+.POSIZIONEclassifica {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
 	background-color: #66CCFF;
 	color: #FF0000;
 }
-.piazzscoreconsyes
- {
+
+.piazzscoreconsyes {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
@@ -167,9 +160,8 @@ DIV#benvenuti2
 	border: 1px dashed Green;
 	text-align: center;
 }
- 
- .piazzscoreconsno
- {
+
+.piazzscoreconsno {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
@@ -179,8 +171,7 @@ DIV#benvenuti2
 	text-align: center;
 }
 
- .piazzscoreneutro
-{
+.piazzscoreneutro {
 	border-right: red 1px dashed;
 	border-top: red 1px dashed;
 	font-weight: bold;
@@ -194,14 +185,13 @@ DIV#benvenuti2
 }
 
 .nomeinpiazzola {
-
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
 	background-color: #CCCCFF;
 }
 
-ddtr, ddtd {
+ddtr, ddtd  {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
@@ -210,62 +200,55 @@ ddtr, ddtd {
 	border-top: black 2px dotted;
 	border-left: black 2px dotted;
 	border-right: black 2px dotted;
-	
-	
 }
 
-.righe 
-{
+.righe {
 	background-color: #FFFFFF;
-	cellpadding=3px; 
-	cellspacing=1px;
+	cellpadding
+	=3px;
+	cellspacing
+	=1px;
 }
 
-.righealt 
-{
+.righealt {
 	background-color: #FFFF9E;
-	cellpadding=3px; 		
-	cellspacing=1px;
-		
+	cellpadding
+	=3px;
+	cellspacing
+	=1px;
 }
 
-.interlinea
-{
+.interlinea {
 	background-image: url("immagini/linea.jpg");
 	height: 4px;
-	
 }
-.interlinea-vuota
-{
+
+.interlinea-vuota {
 	background-color: #FFFFFF;
 	height: 4px;
-	
 }
-.interlinea-back
-{
+
+.interlinea-back {
 	background-image: url("immagini/linead.jpg");
 	height: 4px;
-	
 }
 
-
 .piazzolapregara {
-	float: left; 
-	width: 48%; 
-	border: 4px; 
-	border-style: double; 
+	float: left;
+	width: 48%;
+	border: 4px;
+	border-style: double;
 	border-color: #00F;
 	margin: 3px;
 	font-family: fantasy;
 }
 
-
 .classificaPerCompagnia {
-	float: left; 
-	width: 48%; 
-	border: 4px; 
-//	border-style: double; 
-//	border-color: #00F;
+	float: left;
+	width: 48%;
+	border: 4px; //
+	border-style: double; //
+	border-color: #00F;
 	margin: 3px;
 	font-family: fantasy;
 }

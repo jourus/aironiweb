@@ -25,9 +25,7 @@ for($snipet = 1; $snipet <= 6; $snipet ++) {
 		<thead><tr><td><h2 id='titolotabpiazzola$snipet'>Piazzola $snipet</h2></td></tr></thead>
 		<tbody></tbody></table></div>";
 	
-	// echo "<div id='divtabpiazzola$snipet' class='divPiazzole'> <table id='tabpiazzola$snipet' class='tblPiazzole'>
-	// <thead><tr><td colspan=3><label id='titolotabpiazzola$snipet'>Piazzola $snipet</label></td></tr></thead>
-	// <tbody></tbody></table></div>";
+
 }
 
 ?>

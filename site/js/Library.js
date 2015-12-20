@@ -162,8 +162,8 @@ function SetPodio(classe, categoria)  {
 			$('#PodioSpot' + conta).text(val.spot);
 			$('#PodioSuper' + conta).text(val.superspot);
 			$('#FotoPodio' + conta).attr('src','immagini/foto/' + val.foto);
-			$("#divPodio" + conta).fadeIn(3000);
-			$("#BarraVerticalePodio" + conta).fadeIn(3000);
+			$("#divPodio" + conta).fadeIn(1500);
+			$("#BarraVerticalePodio" + conta).fadeIn(1500);
 			conta ++;
 		});
 		

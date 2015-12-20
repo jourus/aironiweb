@@ -112,17 +112,11 @@
 			var qsClasse = getUrlParameter('classe');
 			var qsCategoria = getUrlParameter('categoria');
 
-			// $(".BarraVerticalePodio").attr("visibility","visible");
-
-			$(".BarraVerticalePodio, .divPodio, .DescClasseCategoria").hide();
-			$(".BarraVerticalePodio, .divPodio, .DescClasseCategoria").css(
-					'visibility', 'visible');
-
 			SetClasse("#DescClasse", qsClasse);
 			SetCategoria("#DescCategoria", qsCategoria);
 			SetInfogara('#luogoEData')
 			SetPodio(qsClasse, qsCategoria);
-			$(".DescClasseCategoria").fadeIn(3000);
+			$(".DescClasseCategoria").fadeIn(1500);
 		}
 	</script>
 

@@ -11,7 +11,7 @@ Scores consegnati / da consegnare
 	height: 33px;
 	float: right;
 	text-align: right;
-	visibility: hidden;
+	display: none;
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
@@ -24,7 +24,7 @@ Scores consegnati / da consegnare
 	font-family: Arcon;
 	background-color: rgba(110, 141, 230, 0.5);
 	box-shadow: 5px 5px 10px 2px #BBB;
-	visibility: hidden;
+	display: none;
 }
 
 .theadClassifica {
@@ -62,7 +62,7 @@ Scores consegnati / da consegnare
 	box-shadow: 5px 5px 10px 2px #BBB;
 	font-size: 11;
 	margin-left: 5px;
-	visibility: hidden;
+	display: none;
 }
 
 .consegnascores {

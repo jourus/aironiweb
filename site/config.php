@@ -1,5 +1,5 @@
 <?php
-define ( "AIRO_CONN_SERVERNAME", "localhost" );
+define ( "AIRO_CONN_SERVERNAME", "127.0.0.1" );
 define ( "AIRO_CONN_USERNAME", "airo" );
 define ( "AIRO_CONN_PASSWORD", "airo" );
 define ( "AIRO_CONN_DBNAME", "airophp" );

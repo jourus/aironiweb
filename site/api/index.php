@@ -122,6 +122,8 @@ $response ['code'] = 0;
 $response ['status'] = 404;
 $response ['data'] = NULL;
 
+
+
 // --- Step 2: Authorization
 
 // Optionally require connections to be made via HTTPS
@@ -335,14 +337,65 @@ if (strcasecmp ( $apiMethod, 'compagnie' ) == 0) {
 	$response ['data'] = getCompagnie();
 }
 
+// Method l: Elenco Foto da associare
+if (strcasecmp ( $apiMethod, 'fotodaassociare' ) == 0) {
 
+	$response ['code'] = 1;
+	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+	$response ['data'] = getElencoFotoDaAssociare();
+}
 
+// Method l: abbinamento Foto
+if (strcasecmp ( $apiMethod, 'abbinafoto' ) == 0) {
+
+	if (isset ( $_GET ['foto'] )) {
+		$foto = $_GET ['foto'];
+	} else {
+		$foto = null;
+	}
+	
+	if (isset ( $_GET ['tessera'] )) {
+		$tessera = $_GET ['tessera'];
+	} else {
+		$tessera = null;
+	}
+	
+	if (DEBUG) {
+		error_log("deliver_response - \$apiMethod --> $apiMethod");
+		error_log("deliver_response - \$tessera --> $tessera");
+		error_log("deliver_response - \$foto --> $foto");
+	}
+	
+	$response ['code'] = 1;
+	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+	$response ['data'] = abbinaArciereFoto($tessera, $foto );
+	
+}
+
+// Method m: rimoazione abbinamento Foto
+if (strcasecmp ( $apiMethod, 'disabbinafoto' ) == 0) {
+
+	if (isset ( $_GET ['tessera'] )) {
+		$tessera = $_GET ['tessera'];
+	} else {
+		$tessera = null;
+	}
+
+	if (DEBUG) {
+		error_log("deliver_response - \$apiMethod --> $apiMethod");
+		error_log("deliver_response - \$tessera --> $tessera");
+	}
+
+	$response ['code'] = 1;
+	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+	$response ['data'] = disabbinaArciereFoto($tessera );
+
+}
 
 
 // --- Step 4: Deliver Response
 
 // Return Response to browser
 deliver_response ( $apiFormat, $response );
-
-?>
-			
+//echo json_encode($response);
+?>	

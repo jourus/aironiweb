@@ -82,6 +82,7 @@ function loadTextFileAjaxSync(filePath, mimeType)
 
 <?php
 
+
 // var myUrl= 'http://localhost/airo/api/?method=piazzole&format=json&min=' + piazzola + '&max=' + piazzola;
 ini_set ( 'user_agent', "PHP" ); // github requires this
 $api = 'http://localhost';
@@ -180,7 +181,6 @@ $.getJSON(url, function(data) {
 	console.log(arrCompagnie);
 
 });
-
 
 
 // var setConsegna = function(piazzola) {

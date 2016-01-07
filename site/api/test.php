@@ -33,8 +33,36 @@
 <?php 
 include_once 'PiazzoleService.php';
 
+
+getCompagniaArciere(23);
+
+$ciccio =  getAllowedExt();
+$pluto = "jpg";
+
+//echo $ciccio[0] . "<br/>";
+
+
+if (in_array ( $pluto, $ciccio )){
+	echo "Ho trovato PLUTO<br/><br/><br/>";	
+}
+	else {
+		echo "Nulla da segnalare<br/><br/><br/>";
+	}
+
+
+
+
 $pieces = getClassificaCompagnia('04ARCH');
 getPodio('CAM', 'SI');
+
+
+$ext =  getAllowedExt();
+
+echo  join(";", $ext);
+$ciccio = getElencoFotoDaAssociare();
+echo "Ci sono " . count($ciccio) ." file";
+echo "GIANFRANCO";
+
 
 
 //echo json_encode($pieces);
@@ -302,6 +330,7 @@ function refreshFotoOLD() {
 
 
 }
+
 	
 
 </script>

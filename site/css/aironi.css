@@ -109,7 +109,7 @@ table#comandispeciali {
 	border: 0px;
 	padding: 0px;
 	margin: 0px;
-	bordercolor: #999999;
+	border-color: #999999;
 }
 
 div#speciali {
@@ -127,18 +127,14 @@ div#comandimanuali {
 
 .righe {
 	background-color: #FFFFFF;
-	cellpadding
-	=3px;
-	cellspacing
-	=1px;
+	padding: 3px;
+	margin: 1px;
 }
 
 .righealt {
 	background-color: #FFFF9E;
-	cellpadding
-	=3px;
-	cellspacing
-	=1px;
+	padding: 3px;
+	margin: 1px;
 }
 
 .interlinea {

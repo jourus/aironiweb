@@ -340,9 +340,15 @@ if (strcasecmp ( $apiMethod, 'compagnie' ) == 0) {
 // Method l: Elenco Foto da associare
 if (strcasecmp ( $apiMethod, 'fotodaassociare' ) == 0) {
 
+	if (isset ( $_GET ['nascondipath'] )) {
+		$nascondipath = $_GET ['nascondipath'];
+	} else {
+		$nascondipath = true;
+	}
+	
 	$response ['code'] = 1;
 	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
-	$response ['data'] = getElencoFotoDaAssociare();
+	$response ['data'] = getElencoFotoDaAssociare($nascondipath);
 }
 
 // Method l: abbinamento Foto
@@ -390,6 +396,28 @@ if (strcasecmp ( $apiMethod, 'disabbinafoto' ) == 0) {
 	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
 	$response ['data'] = disabbinaArciereFoto($tessera );
 
+}
+
+// Method n: Elenco arcieri da abbinare
+if (strcasecmp ( $apiMethod, 'arcieridaabbinare' ) == 0) {
+
+	$response ['code'] = 1;
+	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+	$response ['data'] = getArcieriDaAbbinare ();
+}
+
+// Method o: Elenco arcieri abbinati (con relativa foto)
+if (strcasecmp ( $apiMethod, 'arcieriabbinati' ) == 0) {
+	
+	if (isset ( $_GET ['tessera'] )) {
+		$tessera = $_GET ['tessera'];
+	} else {
+		$tessera = null;
+	}
+	
+	$response ['code'] = 1;
+	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+	$response ['data'] = getArcieriAbbinati($tessera);
 }
 
 

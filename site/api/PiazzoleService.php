@@ -10,6 +10,16 @@ function getPiazzole($piazzolaDa, $piazzolaA) {
 	return getGenericData(AIRO_SQL_GET_PIAZZOLE, "ii", array($piazzolaDa, $piazzolaA));
 }
 
+function getArcieriDaAbbinare() {
+	return getGenericData(AIRO_SQL_GET_ARCIERI_DA_ABBINARE);
+}
+function getArcieriAbbinati($tessera) {
+	if (is_null ( $tessera )) {
+		return getGenericData(AIRO_SQL_GET_ARCIERI_ABBINATI );
+	} else {
+		return getGenericData(AIRO_SQL_GET_ARCIERI_ABBINATI_BY_ID,"s",array($tessera) );
+	}
+}
 
 function getClassificaCompagnia($compagnia) {
 	return getGenericData(AIRO_SQL_GET_CLASSIFICA_COMPAGNIA, "s", array($compagnia));
@@ -319,7 +329,7 @@ function disabbinaArciereFoto($nTessera) {
 		return array(error=> 30, message => $errMsg);
 	}
 	if (removeAbbinamentoArciereFoto($nTessera)) {
-		return array(error=> 20, message => "");
+		return array(error=> 0, message => "");
 	} else {
 		$errMsg = "Errore rimuovendo l'abbinamento sulla tessera $nTessera. I file sono stati ripristinati, ma sul db l'abbinamento esiste ancora";
 		error_log("disabbinaArciereFoto: " . $errMsg);

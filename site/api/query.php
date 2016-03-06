@@ -1,5 +1,6 @@
 <?php
 define ( "AIRO_SQL_GET_PIAZZOLE", "select COGNOME as 'Cognome', NOME as 'Nome', COMP as 'Compagnia', PIAZZUOLA as Piazzola, POS as Posizione, tessera as Tessera, CLASSE as Classe, CATEGORIA as Categoria from ISCRITTI where PIAZZUOLA between ? and ? order by PIAZZUOLA asc, POS asc" );
+define ( "AIRO_SQL_GET_ARCIERI_DA_ABBINARE", "select COGNOME as 'Cognome', NOME as 'Nome', COMP as 'Compagnia', PIAZZUOLA as Piazzola, POS as Posizione, tessera as Tessera, CLASSE as Classe, CATEGORIA as Categoria from ISCRITTI where TESSERA not in (select id from IMMAGINI) order by PIAZZUOLA asc, POS asc");
 define ( "AIRO_SQL_GET_CLASSI_BY_ID", "select id as 'IdClasse', descrizione as 'DescrizioneClasse' from CLASSE where id = ?;" );
 define ( "AIRO_SQL_GET_CLASSI_ALL", "select id as 'IdClasse', descrizione as 'DescrizioneClasse' from CLASSE;" );
 define ( "AIRO_SQL_GET_CATEGORIE_BY_ID", "select id as 'IdCategoria', descrizione as 'DescrizioneCategoria' from CATEGORIA where id = ?;" );
@@ -22,3 +23,5 @@ define ( "AIRO_SQL_GET_COMPAGNIA_ARCIERE", "SELECT COMP as `Compagnia` FROM ISCR
 define ( "AIRO_SQL_INSERT_ABBINAMENTO_FOTO", "insert into IMMAGINI (`ID`, `NomeFile`, `Originale`) values (?, ?, ?);");
 define ( "AIRO_SQL_DELETE_ABBINAMENTO_FOTO", "delete from IMMAGINI where `ID` = ?;");
 define ( "AIRO_SQL_GET_ABBINAMENTO_FOTO", "select `NomeFile`, `Originale` from IMMAGINI where `ID` = ?;");
+define ( "AIRO_SQL_GET_ARCIERI_ABBINATI", "select COGNOME as 'Cognome', NOME as 'Nome', COMP as 'Compagnia', PIAZZUOLA as Piazzola, POS as Posizione, tessera as Tessera, CLASSE as Classe, CATEGORIA as Categoria, a.NomeFile as Foto  from IMMAGINI a inner join ISCRITTI b on b.tessera = a.ID;");
+define ( "AIRO_SQL_GET_ARCIERI_ABBINATI_BY_ID", "select COGNOME as 'Cognome', NOME as 'Nome', COMP as 'Compagnia', PIAZZUOLA as Piazzola, POS as Posizione, tessera as Tessera, CLASSE as Classe, CATEGORIA as Categoria, a.NomeFile as Foto  from IMMAGINI a inner join ISCRITTI b on b.tessera = a.ID where tessera = ?;");

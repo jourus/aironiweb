@@ -415,12 +415,66 @@ if (strcasecmp ( $apiMethod, 'arcieriabbinati' ) == 0) {
 		$tessera = null;
 	}
 	
+	if (isset ( $_GET ['tutti'] )) {
+		$tutti = $_GET ['tutti'];
+	} 
+	
+	if ($tutti!=1) {$tutti = 0;}
+	
 	$response ['code'] = 1;
 	$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
-	$response ['data'] = getArcieriAbbinati($tessera);
+	$response ['data'] = getArcieriAbbinati($tessera, $tutti);
+}
+
+// Method p: Marca Arciere come stampato
+if (strcasecmp ( $apiMethod, 'stampato' ) == 0) {
+
+	if (isset ( $_GET ['tessera'] )) {
+		$tessera = $_GET ['tessera'];
+	} else {
+		$tessera = null;
+	}
+
+	if ($tessera==null){
+		$response ['code'] = 0;
+		$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+		$response ['data'] = "Il parametro 'tessera' è obbligatorio.";
+		
+	} else {
+		$response ['code'] = 1;
+		$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+		$response ['data'] = setArciereStampato($tessera);
+	}
 }
 
 
+// Method q: Restituisce informazioni sulla foto;
+if (strcasecmp ( $apiMethod, 'fotoinfo' ) == 0) {
+
+	if (isset ( $_GET ['file'] )) {
+		$file = $_GET ['file'];
+	} else {
+		$file = null;
+	}
+
+	if (isset ( $_GET ['tipo'] )) {
+		$tipo = $_GET ['tipo'];
+	} else {
+		$tipo = null;
+	}
+	
+
+	if ($file==null || $tipo==null){
+		$response ['code'] = 0;
+		$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+		$response ['data'] = "'Parametri obbligatori: file, il nome senza il percorso. Tipo: nonabbinate, abbinate";
+
+	} else {
+		$response ['code'] = 1;
+		$response ['status'] = $api_response_code [$response ['code']] ['HTTP Response'];
+		$response ['data'] = getFotoInfo($file, $tipo);
+	}
+}
 // --- Step 4: Deliver Response
 
 // Return Response to browser

@@ -13,9 +13,9 @@ function getPiazzole($piazzolaDa, $piazzolaA) {
 function getArcieriDaAbbinare() {
 	return getGenericData(AIRO_SQL_GET_ARCIERI_DA_ABBINARE);
 }
-function getArcieriAbbinati($tessera) {
+function getArcieriAbbinati($tessera, $tutti) {
 	if (is_null ( $tessera )) {
-		return getGenericData(AIRO_SQL_GET_ARCIERI_ABBINATI );
+		return getGenericData(AIRO_SQL_GET_ARCIERI_ABBINATI, "i", array($tutti) );
 	} else {
 		return getGenericData(AIRO_SQL_GET_ARCIERI_ABBINATI_BY_ID,"s",array($tessera) );
 	}
@@ -281,6 +281,13 @@ function executeSqlCommand($sqlString, $tipi="", $parametri=[]) {
 }
 
 
+// Inserisce l'informazione che un certo arciere è già stato stampato.
+function setArciereStampato($tessera) {
+	return executeSqlCommand(AIRO_SQL_UPDATE_ARCIERE_STAMPATO, "i", array($tessera));
+}
+
+
+
 function setAbbinamentoArciereFoto($tessera, $file, $origine) {
 	return executeSqlCommand(AIRO_SQL_INSERT_ABBINAMENTO_FOTO, "iss", array($tessera, $file, $origine));
 	
@@ -289,6 +296,8 @@ function removeAbbinamentoArciereFoto($tessera) {
 	return executeSqlCommand(AIRO_SQL_DELETE_ABBINAMENTO_FOTO, "i", array($tessera));
 
 }
+
+
 function getCompagniaArciere($tessera) {
 	return getGenericData(AIRO_SQL_GET_COMPAGNIA_ARCIERE, "i", array($tessera), true);
 
@@ -415,8 +424,122 @@ function abbinaArciereFoto ($nTessera, $nomeFoto) {
 			
 		}
 	}
-
-	
 }
+
+function getFotoInfo($file, $tipo){
+	
+/* 	echo "Tipo: $tipo.<br/>";
+	
+	$esito = file_exists(AIRO_FOLDER_FOTO_PODIO . $file);
+	echo "Esito verifica su file '" . AIRO_FOLDER_FOTO_PODIO . $file . "': $esito.<br/>";
+	
+	$esito = file_exists(AIRO_FOLDER_FOTO_DA_ASSOCIARE . $file);
+	echo "Esito verifica su file '" . AIRO_FOLDER_FOTO_DA_ASSOCIARE . $file . "': $esito.<br/>";
+*/	
+	switch (strtolower( $tipo)){
+		case 'abbinate':
+			$path = AIRO_FS_FOLDER_FOTO_PODIO . $file;
+			break;
+		case 'nonabbinate':
+			$path = AIRO_FS_FOLDER_FOTO_DA_ASSOCIARE . $file;
+			break;
+		default:return "Il valore di tipo: '$tipo' non è ammesso.";
+			break;
+	}
+	
+	$myinfo = new ExifData($path);
+	return $myinfo->serialize();
+		
+}
+
+/*
+ *  Oggetto per la gestione delle immagini!
+ */
+class ExifData {
+	public  $FileName;
+	private $exifData;
+	//public $exifData;
+	public $Nome;
+	public $DataScatto;
+	private $_dataScatto;
+	public $DataModifica;
+	private $_dataModifica;
+	public $Dimensioni;
+	public $DescDimensioni;
+	public $Apertura;
+	public $ISO;
+	public $Focale;
+	public $BilanciamentoBianco;
+	public $Produttore;
+	public $Modello;
+
+	public function __construct($filename)
+	{
+		if (file_exists($filename)) {
+
+			$this->FileName = $filename;
+			$this->exifData = exif_read_data($filename, 0, true);
+
+			$mainKey = 'FILE';
+			$this->setValue($mainKey, 'FileName', 'Nome');
+			$this->setValue($mainKey, 'FileSize', 'Dimensioni');
+			$this->DescDimensioni = $this->SizeName($this->Dimensioni);
+
+			$this->setValue($mainKey, 'FileDateTime', '_dataModifica');
+			date_default_timezone_set('Europe/Rome');
+			$this->DataModifica = date('d/m/Y H:i:s', $this->_dataModifica);
+
+			// $this->setValue($mainKey, '', '');
+			$mainKey = 'EXIF';
+			$this->setValue($mainKey, 'DateTimeOriginal', '_dataScatto');
+
+			$this->DataScatto = DateTime::createFromFormat('Y:m:d H:i:s', $this->_dataScatto)->format('d/m/Y H:i:s');
+
+			$this->setValue($mainKey, 'ApertureValue', 'Apertura');
+			$this->setValue($mainKey, 'ISOSpeedRatings', 'ISO');
+			$this->setValue($mainKey, 'FocalLength', 'Focale');
+			$this->setValue($mainKey, 'WhiteBalance', 'BilanciamentoBianco');
+
+			$mainKey = 'IFD0';
+			$this->setValue($mainKey, 'Make', 'Produttore');
+			$this->setValue($mainKey, 'Model', 'Modello');
+
+		}
+	}
+
+	// Imposta gli attributi dell'oggetto ExifData prendendoli dalla libreria
+	private function setValue($exifPropName, $exifSection, $objProperty){
+		$myData = $this->exifData["$exifPropName"];
+		if (array_key_exists($exifSection, $myData))
+		{
+			$this->$objProperty = $myData["$exifSection"];
+		}
+	}
+	private function SizeName($dimensioni){
+
+		$sizeRange = floor(log($dimensioni,10) / 3);
+		//	$message = "<br/>Il SizeRange è $sizeRange. Il file invece è di $size bytes.<br/>";
+		$possibleDesc = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+
+		if ($sizeRange < 0) {$sizeRange = 0;}
+		if ($sizeRange > 4) {$sizeRange = 4;}
+		$descSize = round($dimensioni / pow(10, ($sizeRange * 3)), 0) . " " . $possibleDesc[$sizeRange];
+		return $descSize;
+	}
+
+	public function serialize()
+	{
+		return json_encode($this);
+	}
+}
+
+
+
+
+
+
+
+
+
 
 ?>

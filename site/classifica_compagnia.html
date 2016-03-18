@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Classifica Per Compagnia</title>
+</head>
+<link href="css/aironi.css" rel="stylesheet" type="text/css">
+<link href="css/classifica_compagnia.css" rel="stylesheet"
+	type="text/css">
+<script src="js/jquery.js"></script>
+<script src="js/Library.js"></script>
+<body onload="body_onload()">
+	<p>
+		<span Class="DescClasseCategoria" id="DescClasse">Classifica
+			per Compagnia</span> <span Class="DescClasseCategoria" id="DescCategoria"
+			style="float: right;">04ARCH</span>
+	</p>
+	<div id="divClassifica" class="Classifica">
+		<table id="tabClassifica" class='theadClassifica'>
+			<thead>
+				<tr>
+					<td class='headPOS'>POS</td>
+					<td class='headClasse'>Classe</td>
+					<td class='headCategoria'>Categoria</td>
+					<td class='headNome'>Nome</td>
+					<td class='headPunti'>Punti</td>
+					<td class='headSpot'>Spot</td>
+					<td class='headSuper'>Super</td>
+				</tr>
+			</thead>
+
+			<tbody class="posclassifica">
+				<tr class="rigaClassifica">
+					<td class='fields fieldPOS'></td>
+					<td class='fields fieldNome'></td>
+					<td class='fields fieldNome'></td>
+					<td class='fields fieldNome'></td>
+					<td class='fields fieldPunti'></td>
+					<td class='fields fieldSpot'></td>
+					<td class='fields fieldSuper'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="infoGara">
+		<label id="luogoEData"></label>
+	</div>
+</body>
+<script type='text/javascript'>
+
+function body_onload() {
+	var qsCompagnia = getUrlParameter('compagnia').toUpperCase();
+
+	$('.Classifica, .DescClasseCategoria').hide();
+    $('.Classifica, .DescClasseCategoria').css('visibility', 'visible');
+    
+    
+    $('#DescCategoria').text(qsCompagnia);
+    SetClassificaCompagnia(qsCompagnia);
+    
+    SetInfogara('#luogoEData')
+	$('.Classifica, .DescClasseCategoria').fadeIn(2500);
+    
+
+		
+}
+    
+    
+    
+    
+    
+    
+    
+</script>
+</html>

@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+#boxContenitore {
+	width: 100%;
+	height: 520px;
+	overflow: hidden;
+	position: relative;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+tbody {
+	font-family: Arcon;
+	font-size: 16px;
+	color: #445ec6;
+}
+
+div.interno {
+	width: 80%;
+	position: absolute;
+	top: 0px;
+	margin-left: 10%;
+	margin-right: auto;
+/*	border: 1px solid blue;
+*/}
+
+.tbpiazzola {
+	margin-bottom: 3%;
+	height: 165px;
+/*	border: 1px solid orange;
+*/}
+
+.tbpiazzola thead {
+	margin-top: 20px;
+	text-align: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: #fff042;
+}
+
+h1 {
+	font-size: 28px;
+	font-family: Arcon;
+	background-color: #fff042;
+	color: #6e8de6;
+	box-shadow: 5px 5px 10px 2px #BBB;
+}
+
+.dispari {
+	float: left;
+	width: 50%;
+}
+
+.pari {
+	float: right;
+	width: 45%;
+}
+
+body {
+	background-image: url("../immagini/AironeInFiligranaNeg.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	opacity: 1;
+}

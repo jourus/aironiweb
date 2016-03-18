@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Il Podio</title>
+<link href="css/aironi.css" rel="stylesheet" type="text/css">
+<link href="css/podio.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.js"></script>
+<script src="js/Library.js"></script>
+
+</head>
+
+
+
+<body id="podioBody" onload="body_onload()">
+
+	<div id='divMainPodio'>
+
+		<p>
+			<span Class="DescClasseCategoria" id="DescClasse"></span> <span
+				Class="DescClasseCategoria" id="DescCategoria"></span>
+		</p>
+
+		<div class="BarraVerticalePodio" id="BarraVerticalePodio1">1°
+			CLASSIFICATO</div>
+		<div class="BarraVerticalePodio" id="BarraVerticalePodio2">2°
+			CLASSIFICATO</div>
+		<div class="BarraVerticalePodio" id="BarraVerticalePodio3">3°
+			CLASSIFICATO</div>
+
+
+
+		<div id="divPodio2" class='divPodio'>
+			<img id="FotoPodio2" src="" class="FotoPodio" />
+
+			<p id="NomeArciere2" class="NomeArciere"></p>
+
+			<table>
+				<thead class="HPunteggi">
+					<tr>
+						<td></td>
+						<td>Punti</td>
+						<td>Spot</td>
+						<td>Super</td>
+						<td>
+					</tr>
+				</thead>
+				<tbody class="BPunteggi">
+					<tr>
+						<td></td>
+						<td id="PodioPunti2"></td>
+						<td id="PodioSpot2"></td>
+						<td id="PodioSuper2"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="divPodio1" class='divPodio'>
+			<img id="FotoPodio1" src="" class="FotoPodio" />
+
+			<p id="NomeArciere1" class="NomeArciere"></p>
+
+			<table class="tPodio">
+				<thead class="HPunteggi">
+					<tr>
+						<td>Punti</td>
+						<td>Spot</td>
+						<td>Super</td>
+					</tr>
+				</thead>
+				<tbody class="BPunteggi">
+					<tr>
+						<td id="PodioPunti1"></td>
+						<td id="PodioSpot1"></td>
+						<td id="PodioSuper1"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="divPodio3" class='divPodio'>
+			<img id="FotoPodio3" src="" class="FotoPodio" />
+
+			<p id="NomeArciere3" class="NomeArciere"></p>
+
+			<table>
+				<thead class="HPunteggi">
+					<tr>
+						<td>Punti</td>
+						<td>Spot</td>
+						<td>Super</td>
+					</tr>
+				</thead>
+				<tbody class="BPunteggi">
+					<tr>
+						<td id="PodioPunti3"></td>
+						<td id="PodioSpot3"></td>
+						<td id="PodioSuper3"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<div class="infoGara">
+			<label id="luogoEData"></label>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function body_onload() {
+			var qsClasse = getUrlParameter('classe');
+			var qsCategoria = getUrlParameter('categoria');
+
+			SetClasse("#DescClasse", qsClasse);
+			SetCategoria("#DescCategoria", qsCategoria);
+			SetInfogara('#luogoEData')
+			SetPodio(qsClasse, qsCategoria);
+			$(".DescClasseCategoria").fadeIn(1500);
+		}
+	</script>
+
+</body>
+</html>
